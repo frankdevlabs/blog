@@ -1,5 +1,9 @@
 # Frank's Blog
 
+Structured content powered by [Sanity.io](https://www.sanity.io).
+
+--
+
 _Fully customizable blog template with a React.js front-end._
 
 Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-gatsby-blog).
