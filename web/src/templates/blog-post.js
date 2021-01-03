@@ -1,11 +1,10 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import Container from '../components/container'
+import {toPlainText} from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import {toPlainText} from '../lib/helpers'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -17,7 +16,6 @@ export const query = graphql`
         title
       }
       mainImage {
-        ...SanityImage
         alt
       }
       title
@@ -66,9 +64,9 @@ const BlogPostTemplate = props => {
       {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
 
       {errors && (
-        <Container>
+        <div>
           <GraphQLErrorList errors={errors} />
-        </Container>
+        </div>
       )}
 
       {post && <BlogPost {...post} />}

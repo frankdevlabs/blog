@@ -9,7 +9,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   plugins: [
-    'gatsby-plugin-postcss',
+    `gatsby-plugin-emotion`,
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-sanity',
@@ -19,6 +19,22 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Ubuntu:400,300,500,700`,
+          `Raleway:300,400,400i,700`
+        ],
+        display: 'swap'
+      }
+    },
+    {resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /icons/
+        }
+      }}
   ]
 }

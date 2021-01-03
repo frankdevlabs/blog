@@ -1,7 +1,7 @@
 export default {
   name: 'bodyPortableText',
   type: 'array',
-  title: 'Post body',
+  title: 'BlogPost body',
   of: [
     {
       type: 'block',
