@@ -167,7 +167,7 @@ const ThemeProvider = ({children}) => {
           'h1.heading-1': {
             fontFamily: 'Ubuntu, sans-serif',
             fontWeight: '700',
-            fontSize: '124px',
+            fontSize: '9.8rem',
             lineHeight: '96.8%',
             letterSpacing: '-0.1em'
           },
@@ -180,7 +180,7 @@ const ThemeProvider = ({children}) => {
             textDecorationLine: 'underline'
           },
           '.paragraph': {
-            lineHeight: '32px'
+            lineHeight: '3.2rem'
           },
           '.caption': {
             fontFamily: 'Ubuntu, sans-serif',
@@ -193,6 +193,13 @@ const ThemeProvider = ({children}) => {
           '.snippit': {
             fontStyle: 'normal',
             lineHeight: '155.6%'
+          },
+          '.snippit-xl': {
+            fontSize: '2.5rem',
+            fontStyle: 'normal',
+            lineHeight: '3.5rem',
+            letterSpacing: '0.01em',
+            textAlign: 'left'
           },
           a: {
             textDecoration: 'none',
@@ -214,6 +221,9 @@ const ThemeProvider = ({children}) => {
               boxShadow: `${currentTheme.secondary} 0px -1.5em 0px 0px inset`,
               color: currentTheme.background
             }
+          },
+          'ol,ul': {
+            paddingLeft: '2rem'
           }
         })} />
         {/* <Global styles={css(theme === 'dark' ? PRISM_THEME_DARK : PRISM_THEME_LIGHT)} /> */}

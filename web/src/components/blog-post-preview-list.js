@@ -37,7 +37,10 @@ const BlogPostPreviewList = (props) => {
               />
             </div>
             <h3 className='heading-3' css={{marginTop: '6px'}}>{node.title}</h3>
-            <div className='caption' css={{padding: '1px 0'}}>{format(node.publishedAt, 'D MMMM YYYY', {locale: nl})}</div>
+            <div className='caption' css={
+              {padding: '1px 0'}}>
+              {format(node.publishedAt, 'D MMMM YYYY', {locale: nl})} | {node.readingTimeInMinutes} min.
+            </div>
             <div className='snippit'><PortableText blocks={node._rawExcerpt} /></div>
           </Link>
         </div>

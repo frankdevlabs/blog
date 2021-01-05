@@ -29,7 +29,7 @@ const baseTheme = {
   outerPadding: '60px',
   outerPaddingXL: '45px',
   outerPaddingMD: '20px',
-  outerPaddingSM: '2%'
+  outerPaddingSM: '2rem'
 }
 
 export const getTheme = theme =>

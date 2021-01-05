@@ -10,6 +10,7 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import BlogPostPreviewList from '../components/blog-post-preview-list'
+import mq from '../lib/media'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -36,6 +37,7 @@ export const query = graphql`
               }
             }
           }
+          readingTimeInMinutes
           title
           _rawExcerpt
           slug {
@@ -79,6 +81,25 @@ const IndexPage = props => {
           description={site.description}
           keywords={site.keywords}
         />
+        <section className='hero-section' css={{
+          paddingBottom: '25vh',
+          [mq('md')]: {
+            paddingBottom: '15vh'
+          },
+          [mq('sm')]: {
+            paddingBottom: '5vh'
+          }
+        }}>
+          <div className='container' css={{
+            paddingTop: '10vh',
+            [mq('sm')]: {
+              paddingTop: '5vh'
+            }
+          }}>
+            <h1 className='title'>Frank’s Blog</h1>
+            <h2 className='sub-title'>Hier schrijf ik over legal en tech.</h2>
+          </div>
+        </section>
         <section>
           <div className='container'>
             <h1 hidden>Welcome to {site.title}</h1>

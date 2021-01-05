@@ -11,9 +11,20 @@ export default ({node}) => {
     clientConfig.sanity
   )
   return (
-    <figure>
+    <figure css={{
+      margin: '3.7rem 0'
+    }}>
       <Img fluid={fluidProps} alt={node.alt} />
-      <figcaption>{node.caption}</figcaption>
+      <figcaption
+        css={{
+          fontSize: '1.4rem',
+          fontStyle: 'normal',
+          fontWeight: '300',
+          lineHeight: '2.2rem',
+          letterSpacing: '0em',
+          textAlign: 'center'
+        }}
+      >{node.caption}</figcaption>
     </figure>
   )
 }

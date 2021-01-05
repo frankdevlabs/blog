@@ -34,7 +34,8 @@ const Header = () => {
                 width: '100%'
               }
             }
-          }}>{theme === 'light' ? <LightIcon /> : <DarkIcon />}</div>
+          }}><Link to='/'>{theme === 'light' ? <LightIcon /> : <DarkIcon />}</Link>
+          </div>
           <div css={{
             display: 'flex'
           }}>

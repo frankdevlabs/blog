@@ -37,6 +37,12 @@ module.exports = {
           include: /icons/
         }
       }
+    },
+    {
+      resolve: `gatsby-transform-portable-text`,
+      options: {
+        extendTypes: [{typeName: `SanityPost`, contentFieldName: 'body'}]
+      }
     }
   ]
 }

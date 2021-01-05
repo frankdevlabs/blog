@@ -5,11 +5,13 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
+import ThemeProvider from '../components/ThemeProvider'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
     post: sanityPost(id: {eq: $id}) {
       id
+      readingTimeInMinutes
       publishedAt
       categories {
         _id
@@ -24,31 +26,11 @@ export const query = graphql`
       }
       _rawExcerpt(resolveReferences: {maxDepth: 5})
       _rawBody(resolveReferences: {maxDepth: 5})
-      authors {
-        _key
-        author {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
+      mainImage {
+        asset {
+          fluid (maxWidth: 1160) {
+            ...GatsbySanityImageFluid
           }
-          name
         }
       }
     }
@@ -58,19 +40,21 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const {data, errors} = props
   const post = data && data.post
+  console.log(post)
   return (
-    <Layout>
-      {errors && <SEO title='GraphQL Error' />}
-      {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
+    <ThemeProvider>
+      <Layout>
+        {errors && <SEO title='GraphQL Error' />}
+        {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
 
-      {errors && (
-        <div>
-          <GraphQLErrorList errors={errors} />
-        </div>
-      )}
-
-      {post && <BlogPost {...post} />}
-    </Layout>
+        {errors && (
+          <div>
+            <GraphQLErrorList errors={errors} />
+          </div>
+        )}
+        {post && <BlogPost {...post} />}
+      </Layout>
+    </ThemeProvider>
   )
 }
 
