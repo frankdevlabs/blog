@@ -31,6 +31,9 @@ export const query = graphql`
           fluid (maxWidth: 1160) {
             ...GatsbySanityImageFluid
           }
+          fixed (width: 1200) {
+            ...GatsbySanityImageFixed
+          }
         }
       }
     }
@@ -40,12 +43,11 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const {data, errors} = props
   const post = data && data.post
-  console.log(post)
   return (
     <ThemeProvider>
       <Layout>
         {errors && <SEO title='GraphQL Error' />}
-        {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} />}
+        {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} type='article' />}
 
         {errors && (
           <div>

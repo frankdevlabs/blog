@@ -19,6 +19,12 @@ export default {
       }
     },
     {
+      name: 'twitter',
+      type: 'string',
+      title: 'Twitter account',
+      description: 'e.g. @name'
+    },
+    {
       name: 'image',
       type: 'mainImage',
       title: 'Image'

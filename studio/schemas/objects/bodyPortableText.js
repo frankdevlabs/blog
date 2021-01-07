@@ -1,3 +1,5 @@
+import {FaPaperclip} from 'react-icons/fa'
+
 export default {
   name: 'bodyPortableText',
   type: 'array',
@@ -15,7 +17,6 @@ export default {
         {title: 'H1', value: 'h1'},
         {title: 'H2', value: 'h2'},
         {title: 'H3', value: 'h3'},
-        {title: 'H4', value: 'h4'},
         {title: 'Quote', value: 'blockquote'}
       ],
       lists: [{title: 'Bullet', value: 'bullet'}, {title: 'Number', value: 'number'}],
@@ -29,12 +30,27 @@ export default {
           {
             name: 'link',
             type: 'object',
-            title: 'URL',
+            title: 'External Link',
             fields: [
               {
                 title: 'URL',
                 name: 'href',
                 type: 'url'
+              }
+            ]
+          },
+          {
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal Link',
+            blockEditor: {
+              icon: FaPaperclip
+            },
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                to: [{type: 'post'}]
               }
             ]
           }
@@ -48,6 +64,9 @@ export default {
     {
       type: 'mainImage',
       options: {hotspot: true}
+    },
+    {
+      type: 'codesnippet'
     }
   ]
 }

@@ -1,18 +1,31 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {format} from 'date-fns'
 import nl from 'date-fns/locale/nl'
 import PortableText from './portableText'
 import Img from 'gatsby-image'
+import Prism from 'prismjs'
+import SocialShare from './share'
+import {getBlogUrl} from '../lib/helpers'
 
 const BlogPost = (props) => {
-  console.log(props)
+  useEffect(() => {
+    // call the highlightAll() function to style our code blocks
+    Prism.highlightAll()
+  })
+
+  const url = 'https://www.brunmontagne.com' + getBlogUrl(props.publishedAt, props.slug.current)
+
   return (
     <section>
-      <div className='container' css={{marginTop: '10vh'}}>
+      <article className='container' css={{marginTop: '10vh'}}>
         <h1 className='heading-1'>{props.title}</h1>
         <div className='caption' css={
           {padding: '1rem 0'}}>
-          {format(props.publishedAt, 'D MMMM YYYY', {locale: nl})} | {props.readingTimeInMinutes} min.
+          {`${format(props.publishedAt, 'D MMMM YYYY', {locale: nl})}
+              | ${props.readingTimeInMinutes}
+              ${props.readingTimeInMinutes > 0 ? 'minuten' : 'minuut'} lezen
+              |
+          `}<SocialShare href={url} title={props.title} />
         </div>
         <div className='snippit-xl' css={{maxWidth: '863px'}}><PortableText blocks={props._rawExcerpt} /></div>
         <div css={{
@@ -44,7 +57,7 @@ const BlogPost = (props) => {
         >
           {props._rawBody && <PortableText blocks={props._rawBody} />}
         </div>
-      </div>
+      </article>
     </section>
   )
 }

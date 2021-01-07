@@ -43,6 +43,8 @@ module.exports = {
       options: {
         extendTypes: [{typeName: `SanityPost`, contentFieldName: 'body'}]
       }
-    }
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`
   ]
 }

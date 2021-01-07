@@ -182,6 +182,21 @@ const ThemeProvider = ({children}) => {
           '.paragraph': {
             lineHeight: '3.2rem'
           },
+          '.paragraph > div > p:not(:last-child)': {
+            marginBottom: '3.4rem'
+          },
+          '.paragraph > div > h1:not(:last-child)': {
+            margin: '6rem 0 1.8rem 0'
+          },
+          '.paragraph > div > h2:not(:last-child)': {
+            margin: '4rem 0 1.2rem 0'
+          },
+          '.paragraph > div > h3:not(:last-child), .paragraph > div > h4:not(:last-child)': {
+            margin: '4rem 0 1rem 0'
+          },
+          '.paragraph li:not(:last-child)': {
+            marginBottom: '1rem'
+          },
           '.caption': {
             fontFamily: 'Ubuntu, sans-serif',
             fontStyle: 'normal',
@@ -223,17 +238,10 @@ const ThemeProvider = ({children}) => {
             }
           },
           'ol,ul': {
-            paddingLeft: '2rem'
+            paddingLeft: '2rem',
+            margin: '3.4rem 0'
           }
         })} />
-        {/* <Global styles={css(theme === 'dark' ? PRISM_THEME_DARK : PRISM_THEME_LIGHT)} /> */}
-        {/* <Global */}
-        {/*  styles={css(` */}
-        {/*		body.dark { */}
-        {/*			${PRISM_THEME_DARK} */}
-        {/*		} */}
-        {/* `)} */}
-        {/* /> */}
         <div
           className='theme-wrapper'
           css={{
