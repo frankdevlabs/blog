@@ -63,8 +63,8 @@ const IndexPage = props => {
   const site = (data || {}).site
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
     : []
 
   if (!site) {
@@ -80,6 +80,8 @@ const IndexPage = props => {
           title={site.title}
           description={site.description}
           keywords={site.keywords}
+          type='website'
+          path='/'
         />
         <section className='hero-section' css={{
           paddingBottom: '25vh',
@@ -102,7 +104,6 @@ const IndexPage = props => {
         </section>
         <section>
           <div className='container'>
-            <h1 hidden>Welcome to {site.title}</h1>
             {postNodes && (
               <BlogPostPreviewList
                 title='Latest blog posts'

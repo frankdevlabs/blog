@@ -1,13 +1,21 @@
 module.exports = {
-  extends: ['standard', 'standard-react', 'plugin:import/errors', 'plugin:import/warnings'],
+  extends: [
+    'eslint:recommended',
+    'standard',
+    'standard-react',
+    'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings'
+  ],
+  plugins: ['@emotion'],
   rules: {
     'react/prop-types': 0,
-    'object-curly-spacing': ['error', 'never']
+    'object-curly-spacing': ['error', 'never'],
+    '@emotion/pkg-renaming': 'error'
   },
   settings: {
     react: {
-      pragma: 'React',
-      version: '16.8.4'
+      version: 'detect'
     }
   }
 }

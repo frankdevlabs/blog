@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import {Link} from 'gatsby'
 import {format} from 'date-fns'
 import nl from 'date-fns/locale/nl'
 import PortableText from './portableText'
@@ -13,52 +14,74 @@ const BlogPost = (props) => {
     Prism.highlightAll()
   })
 
-  const url = 'https://www.brunmontagne.com' + getBlogUrl(props.publishedAt, props.slug.current)
+  const url = process.env.GATSBY_HOME_PAGE + getBlogUrl(props.publishedAt, props.slug.current)
 
   return (
-    <section>
-      <article className='container' css={{marginTop: '10vh'}}>
-        <h1 className='heading-1'>{props.title}</h1>
-        <div className='caption' css={
-          {padding: '1rem 0'}}>
-          {`${format(props.publishedAt, 'D MMMM YYYY', {locale: nl})}
+    <>
+      <section>
+        <article className='container' css={{marginTop: '10vh'}}>
+          <h1 className='heading-1'>{props.title}</h1>
+          <div className='caption' css={
+            {padding: '1rem 0'}}>
+            {`${format(props.publishedAt, 'D MMMM YYYY', {locale: nl})}
               | ${props.readingTimeInMinutes}
               ${props.readingTimeInMinutes > 0 ? 'minuten' : 'minuut'} lezen
               |
           `}<SocialShare href={url} title={props.title} />
-        </div>
-        <div className='snippit-xl' css={{maxWidth: '863px'}}><PortableText blocks={props._rawExcerpt} /></div>
-        <div css={{
-          height: '44.5rem',
-          overflow: 'hidden',
-          borderRadius: '4px',
-          position: 'relative',
-          marginTop: '1.6rem'
-        }}>
-          <div className='overflow' css={{
-            height: '100%',
-            width: '100%',
-            position: 'absolute',
-            backgroundImage: 'linear-gradient(0deg, rgba(254, 251, 244, 0.51), rgba(254, 251, 244, 0.51))',
-            zIndex: '1'
-          }} />
-          <Img css={{
-            height: '100%',
-            borderRadius: '4px'
-          }} fluid={props.mainImage.asset.fluid} alt={props.mainImage.alt}
-          />
-        </div>
-        <div className='paragraph' css={{
-          paddingTop: '5.6rem',
-          marginLeft: 'auto',
-          marginRight: 'auto',
+          </div>
+          <div className='snippit-xl' css={{maxWidth: '863px'}}><PortableText blocks={props._rawExcerpt} /></div>
+          <div css={{
+            height: '44.5rem',
+            overflow: 'hidden',
+            borderRadius: '4px',
+            position: 'relative',
+            marginTop: '1.6rem'
+          }}>
+            <div className='overflow' css={{
+              height: '100%',
+              width: '100%',
+              position: 'absolute',
+              backgroundImage: 'linear-gradient(0deg, rgba(254, 251, 244, 0.51), rgba(254, 251, 244, 0.51))',
+              zIndex: '1'
+            }} />
+            <Img css={{
+              height: '100%',
+              borderRadius: '4px'
+            }} fluid={props.mainImage.asset.fluid} alt={props.mainImage.alt}
+            />
+          </div>
+          <div className='paragraph' css={{
+            paddingTop: '5.6rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: '688px',
+            borderBottom: '1px solid rgba(9, 25, 43, 0.09)'
+          }}
+          >
+            {props._rawBody && <PortableText blocks={props._rawBody} />}
+            <div css={{
+              fontFamily: 'Ubuntu, sans-serif',
+              fontWeight: '300',
+              fontSize: '1.4rem',
+              lineHeight: '156.57%',
+              letterSpacing: '0.02em',
+              textAlign: 'right',
+              padding: '2.6rem 0 3.6rem 0'
+            }}><SocialShare href={url} title={props.title} /></div>
+          </div>
+        </article>
+      </section>
+      <section>
+        <div className='container' css={{
           maxWidth: '688px'
-        }}
-        >
-          {props._rawBody && <PortableText blocks={props._rawBody} />}
+        }}>
+          <h3 className='heading-3'>Meer lezen?</h3>
+          <p>Bekijk <Link className='anchor' to='/about'>mijn</Link>{' '}
+            <Link className='anchor' to='/'>andere blogs.</Link>
+          </p>
         </div>
-      </article>
-    </section>
+      </section>
+    </>
   )
 }
 

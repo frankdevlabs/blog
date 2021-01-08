@@ -13,17 +13,6 @@ export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
   return !isFuture(publishedAt)
 }
 
-export function buildImageObj (source = {asset: {}}) {
-  const imageObj = {
-    asset: {_ref: source.asset._ref || source.asset._id}
-  }
-
-  if (source.crop) imageObj.crop = source.crop
-  if (source.hotspot) imageObj.hotspot = source.hotspot
-
-  return imageObj
-}
-
 export function toPlainText (blocks) {
   if (!blocks) {
     return ''

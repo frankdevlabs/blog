@@ -1,6 +1,6 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import {toPlainText} from '../lib/helpers'
+import {getBlogUrl, toPlainText} from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
@@ -47,7 +47,11 @@ const BlogPostTemplate = props => {
     <ThemeProvider>
       <Layout>
         {errors && <SEO title='GraphQL Error' />}
-        {post && <SEO title={post.title || 'Untitled'} description={toPlainText(post._rawExcerpt)} image={post.mainImage} type='article' />}
+        {post && <SEO title={post.title || 'Untitled'}
+          description={toPlainText(post._rawExcerpt)}
+          image={post.mainImage} type='article'
+          path={getBlogUrl(post.publishedAt, post.slug.current)}
+        />}
 
         {errors && (
           <div>

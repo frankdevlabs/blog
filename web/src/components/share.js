@@ -1,9 +1,16 @@
 import React from 'react'
 
 const SocialLink = props => {
-  return <a css={{
-    marginLeft: '0.3rem'
-  }} target='_blank' className='anchor' href={props.href}>{props.children}</a>
+  return (<a
+            css={{
+              marginLeft: '0.3rem'
+            }}
+            target='_blank'
+            className='anchor'
+            href={props.href}
+            rel="noopener noreferrer external"
+  >{props.children}
+  </a>)
 }
 
 const Share = props => {

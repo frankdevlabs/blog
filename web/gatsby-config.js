@@ -6,6 +6,7 @@ require('dotenv').config({
 const clientConfig = require('./client-config')
 
 const isProd = process.env.NODE_ENV === 'production'
+const path = require('path')
 
 module.exports = {
   plugins: [
@@ -18,6 +19,13 @@ module.exports = {
         token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `img`,
+        path: path.join(__dirname, `src`, `assets`, `img`)
       }
     },
     {

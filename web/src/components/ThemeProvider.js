@@ -229,7 +229,7 @@ const ThemeProvider = ({children}) => {
               cursor: 'pointer'
             }
           },
-          'a.anchor': {
+          'a.anchor, button.anchor': {
             boxShadow: `${currentTheme.secondary} 0px -0.12em 0px 0px inset`,
             transition: 'box-shadow .2s ease-in-out, color .2s ease-in-out',
             '&:hover': {

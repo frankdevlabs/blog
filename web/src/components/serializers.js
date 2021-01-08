@@ -26,8 +26,10 @@ const BlockRenderer = props => {
 
 const serializers = {
   types: {
+    // eslint-disable-next-line react/display-name
     authorReference: ({node}) => <span>{node.author.name}</span>,
     mainImage: Figure,
+    // eslint-disable-next-line react/display-name
     codesnippet: props => (
       <div className='code-container'>
         <pre className={`language-${props.node.language}`} data-language={props.node.language}>
@@ -38,6 +40,7 @@ const serializers = {
     block: BlockRenderer
   },
   marks: {
+    // eslint-disable-next-line react/display-name
     internalLink: ({children, mark}) => {
       if (mark.reference) {
         return (
@@ -48,6 +51,7 @@ const serializers = {
       }
       return <></>
     },
+    // eslint-disable-next-line react/display-name
     link: ({mark, children}) => {
       return <a className='anchor' href={mark.href}>{children}</a>
     }
