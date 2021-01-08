@@ -1,10 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MdSettings } from "react-icons/md";
-import {
+import {MdSettings,
   MdPerson,
   MdDescription,
-  MdLocalOffer
-} from "react-icons/md"
+  MdLocalOffer,
+  MdFolder
+} from 'react-icons/md'
+
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
@@ -21,14 +22,14 @@ export const getDefaultDocumentNode = props => {
    * you can set up that logic in here too.
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
-  const { schemaType } = props
+  const {schemaType} = props
   if (schemaType == 'post') {
     return S.document().views([
       S.view.form(),
       S.view
         .component(IframePreview)
         .title('Web preview')
-        .options({ previewURL })
+        .options({previewURL})
     ])
   }
   return S.document().views([S.view.form()])
@@ -63,6 +64,11 @@ export default () =>
         .schemaType('post')
         .child(S.documentTypeList('post').title('Blog posts')),
       S.listItem()
+        .title('Pages')
+        .icon(MdFolder)
+        .schemaType('page')
+        .child(S.documentTypeList('page').title('Pages')),
+      S.listItem()
         .title('Authors')
         .icon(MdPerson)
         .schemaType('author')
@@ -77,7 +83,7 @@ export default () =>
       // defined the structure above.
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['category', 'author', 'post', 'siteSettings'].includes(
+          !['category', 'author', 'post', 'page', 'siteSettings'].includes(
             listItem.getId()
           )
       )

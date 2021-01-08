@@ -71,7 +71,7 @@ const Footer = () => {
             lineHeight: '156.57%',
             letterSpacing: '0.02em',
             cursor: 'pointer'
-          }} className="anchor" to="/feeds/rss.xml"><RSSFeedIcon /> RSS Feed</a>
+          }} className="anchor" href="/feeds/rss.xml"><RSSFeedIcon /> RSS Feed</a>
         </div>
       </div>
     </footer>

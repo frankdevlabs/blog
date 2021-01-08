@@ -6,7 +6,6 @@ import SEO from '../components/seo'
 import {graphql} from 'gatsby'
 import PortableText from '../components/portableText'
 import SocialShare from '../components/share'
-import {getBlogUrl} from '../lib/helpers'
 
 export const query = graphql`
   query AboutPageQuery {
@@ -26,7 +25,6 @@ export const query = graphql`
 `
 
 const AboutPage = props => {
-  console.log(props)
   const title = 'Over mij'
   const url = process.env.GATSBY_HOME_PAGE + props.path
   const image = props.data.image.childImageSharp.fluid
