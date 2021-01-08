@@ -1,19 +1,19 @@
-import {isFuture, format} from 'date-fns'
+const {isFuture, format} = require('date-fns')
 
-export function mapEdgesToNodes (data) {
+module.exports.mapEdgesToNodes = function (data) {
   if (!data.edges) return []
   return data.edges.map(edge => edge.node)
 }
 
-export function filterOutDocsWithoutSlugs ({slug}) {
+module.exports.filterOutDocsWithoutSlugs = function ({slug}) {
   return (slug || {}).current
 }
 
-export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
+module.exports.filterOutDocsPublishedInTheFuture = function ({publishedAt}) {
   return !isFuture(publishedAt)
 }
 
-export function toPlainText (blocks) {
+module.exports.toPlainText = function (blocks) {
   if (!blocks) {
     return ''
   }
@@ -27,6 +27,6 @@ export function toPlainText (blocks) {
     .join('\n\n')
 }
 
-export function getBlogUrl (publishedAt, slug) {
+module.exports.getBlogUrl = function (publishedAt, slug) {
   return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`
 }

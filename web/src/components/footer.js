@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {Link} from 'gatsby'
+import RSSFeedIcon from './icons/rss-feed.svg'
 import mq from '../lib/media'
 import ThemeContext from './ThemeContext'
 import {getTheme} from '../lib/theme'
@@ -58,6 +59,19 @@ const Footer = () => {
               letterSpacing: '0.02em'
             }}
             to='/privacy/'>Privacy</Link>
+          <div css={{
+            '&::before': {
+              content: '"|"',
+              margin: '0 2rem'
+            }
+          }} />
+          <a css={{
+            fontWeight: '300',
+            fontSize: '1.4rem',
+            lineHeight: '156.57%',
+            letterSpacing: '0.02em',
+            cursor: 'pointer'
+          }} className="anchor" to="/feeds/rss.xml"><RSSFeedIcon /> RSS Feed</a>
         </div>
       </div>
     </footer>
