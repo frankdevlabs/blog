@@ -14,7 +14,7 @@ export const BACKGROUND_TRANSITION_TIME = '0.75s'
  */
 export const useTheme = () => {
   const storedTheme = typeof window !== 'undefined' && window.localStorage.getItem('theme')
-  const mql = window.matchMedia('(prefers-color-scheme: dark)')
+  const mql = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)')
   const prefersDarkFromMQ = mql.matches ? 'dark' : false
   const [theme, setTheme] = useState(storedTheme || prefersDarkFromMQ || 'light')
   const toggleTheme = () =>
