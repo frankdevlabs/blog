@@ -3,9 +3,11 @@ import Img from 'gatsby-image'
 import ThemeProvider from '../components/ThemeProvider'
 import Layout from '../containers/layout'
 import SEO from '../components/seo'
-import {graphql} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 import PortableText from '../components/portableText'
 import SocialShare from '../components/share'
+import ReadMore from '../components/readMore'
+import mq from '../lib/media'
 
 export const query = graphql`
   query AboutPageQuery {
@@ -38,15 +40,23 @@ const AboutPage = props => {
           path='/'
         />
         <section className='about-section'>
-          <div className='container' css={{marginTop: '10vh'}}>
+          <div className='container' css={{
+            marginTop: '10vh',
+            [mq('sm')]: {
+              marginTop: '5vh'
+            }
+          }}>
             <div className='flexbox' css={{
               justifyContent: 'flex-start'
             }}>
               <div css={{
                 position: 'relative',
-                flexGrow: '1',
+                flex: '0 1 15vw',
                 maxWidth: '107px',
-                marginRight: '2.1rem'
+                marginRight: '2.1rem',
+                [mq('sm')]: {
+                  minWidth: '8.3rem'
+                }
               }}>
                 <Img alt='frank de vries' fluid={image} />
               </div>
@@ -81,6 +91,10 @@ const AboutPage = props => {
             </div>
           </div>
         </section>
+        <ReadMore>
+          <p>Bekijk dan <Link className='anchor' to='/'>mijn blogs.</Link>
+          </p>
+        </ReadMore>
       </Layout>
     </ThemeProvider>
   )

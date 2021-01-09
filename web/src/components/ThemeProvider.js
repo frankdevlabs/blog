@@ -169,7 +169,13 @@ const ThemeProvider = ({children}) => {
             fontWeight: '700',
             fontSize: '9.8rem',
             lineHeight: '96.8%',
-            letterSpacing: '-0.1em'
+            letterSpacing: '-0.1em',
+            [mq('md')]: {
+              fontSize: '7.1rem'
+            },
+            [mq('sm')]: {
+              fontSize: '5rem'
+            }
           },
           'h3.heading-3': {
             fontFamily: 'Ubuntu, sans-serif',
@@ -214,7 +220,10 @@ const ThemeProvider = ({children}) => {
             fontStyle: 'normal',
             lineHeight: '3.5rem',
             letterSpacing: '0.01em',
-            textAlign: 'left'
+            textAlign: 'left',
+            [mq('sm')]: {
+              fontSize: '2.3rem'
+            }
           },
           a: {
             textDecoration: 'none',

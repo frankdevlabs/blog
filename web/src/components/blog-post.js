@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react'
-import {Link} from 'gatsby'
 import {format} from 'date-fns'
 import nl from 'date-fns/locale/nl'
 import PortableText from './portableText'
 import Img from 'gatsby-image'
 import Prism from 'prismjs'
 import SocialShare from './share'
+import ReadMore from './readMore'
 import {getBlogUrl} from '../lib/helpers'
+import mq from '../lib/media'
+import {Link} from 'gatsby'
 
 const BlogPost = (props) => {
   useEffect(() => {
@@ -19,7 +21,12 @@ const BlogPost = (props) => {
   return (
     <>
       <section>
-        <article className='container' css={{marginTop: '10vh'}}>
+        <article className='container' css={{
+          marginTop: '10vh',
+          [mq('sm')]: {
+            marginTop: '5vh'
+          }
+        }}>
           <h1 className='heading-1'>{props.title}</h1>
           <div className='caption' css={
             {padding: '1rem 0'}}>
@@ -71,16 +78,11 @@ const BlogPost = (props) => {
           </div>
         </article>
       </section>
-      <section>
-        <div className='container' css={{
-          maxWidth: '688px'
-        }}>
-          <h3 className='heading-3'>Meer lezen?</h3>
-          <p>Bekijk <Link className='anchor' to='/about'>mijn</Link>{' '}
-            <Link className='anchor' to='/'>andere blogs.</Link>
-          </p>
-        </div>
-      </section>
+      <ReadMore>
+        <p>Bekijk <Link className='anchor' to='/about'>mijn</Link>{' '}
+          <Link className='anchor' to='/'>andere blogs.</Link>
+        </p>
+      </ReadMore>
     </>
   )
 }

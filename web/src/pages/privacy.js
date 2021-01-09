@@ -2,9 +2,11 @@ import React from 'react'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import ThemeProvider from '../components/ThemeProvider'
-import {graphql} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 import PortableText from '../components/portableText'
 import {toPlainText} from '../lib/helpers'
+import mq from '../lib/media'
+import ReadMore from '../components/readMore'
 
 export const query = graphql`
   query PrivacyPageQuery {
@@ -39,7 +41,12 @@ const PrivacyPage = props => {
         image={props.data.sanityPage.mainImage}
       />
       <section className='privacy-section'>
-        <div className='container' css={{marginTop: '10vh'}}>
+        <div className='container' css={{
+          marginTop: '10vh',
+          [mq('sm')]: {
+            marginTop: '5vh'
+          }
+        }}>
           <h1 className='heading-1'>{props.data.sanityPage.title}</h1>
           <div className='snippit-xl' css={{
             maxWidth: '863px',
@@ -59,6 +66,10 @@ const PrivacyPage = props => {
           </div>
         </div>
       </section>
+      <ReadMore>
+        <p>Terug naar de <Link className='anchor' to='/'>homepage.</Link>
+        </p>
+      </ReadMore>
     </Layout>
     </ThemeProvider>
   )
