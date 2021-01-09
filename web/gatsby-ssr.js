@@ -1,14 +1,19 @@
-import {createElement} from 'react'
+import React, {createElement} from 'react'
+import App from './src/components/app'
 
 const applyDarkModeClass = `
-  (function() {
+  (function () {
+    var mql = window.matchMedia('(prefers-color-scheme: dark)')
+    var prefersDarkFromMQ = mql.matches
+    var persistedPreference = localStorage.getItem('theme')
+    var hasUsedToggle = typeof persistedPreference === 'string'
+
     try {
-      var mode = localStorage.getItem('theme');
-      if (mode === 'dark') {
-        document.body.classList.add('dark');
+      if ((hasUsedToggle && persistedPreference === 'dark') || prefersDarkFromMQ) {
+        document.body.classList.add('dark')
       }
     } catch (e) {}
-  })();
+  })()
 `
 
 export const onRenderBody = ({setPreBodyComponents}) => {
@@ -18,4 +23,8 @@ export const onRenderBody = ({setPreBodyComponents}) => {
     }
   })
   setPreBodyComponents([script])
+}
+
+export const wrapPageElement = ({element}) => {
+  return <App>{element}</App>
 }

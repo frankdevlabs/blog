@@ -5,7 +5,6 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
-import ThemeProvider from '../components/ThemeProvider'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
@@ -74,7 +73,6 @@ const IndexPage = props => {
   }
 
   return (
-    <ThemeProvider>
       <Layout>
         <SEO
           title={site.title}
@@ -114,7 +112,6 @@ const IndexPage = props => {
           </div>
         </section>
       </Layout>
-    </ThemeProvider>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {format} from 'date-fns'
 import nl from 'date-fns/locale/nl'
 import PortableText from './portableText'
@@ -9,6 +9,8 @@ import ReadMore from './readMore'
 import {getBlogUrl} from '../lib/helpers'
 import mq from '../lib/media'
 import {Link} from 'gatsby'
+import ThemeContext from '../theme/ThemeContext'
+import {getTheme} from '../theme/theme'
 
 const BlogPost = (props) => {
   useEffect(() => {
@@ -17,7 +19,8 @@ const BlogPost = (props) => {
   })
 
   const url = process.env.GATSBY_HOME_PAGE + getBlogUrl(props.publishedAt, props.slug.current)
-
+  const {theme} = useContext(ThemeContext)
+  const {borderColor} = getTheme(theme)
   return (
     <>
       <section>
@@ -62,7 +65,7 @@ const BlogPost = (props) => {
             marginLeft: 'auto',
             marginRight: 'auto',
             maxWidth: '688px',
-            borderBottom: '1px solid rgba(9, 25, 43, 0.09)'
+            borderBottom: `1px solid ${borderColor}`
           }}
           >
             {props._rawBody && <PortableText blocks={props._rawBody} />}

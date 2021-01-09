@@ -2,12 +2,12 @@ import React, {useContext} from 'react'
 import {Link} from 'gatsby'
 import RSSFeedIcon from './icons/rss-feed.svg'
 import mq from '../lib/media'
-import ThemeContext from './ThemeContext'
-import {getTheme} from '../lib/theme'
+import ThemeContext from '../theme/ThemeContext'
+import {getTheme} from '../theme/theme'
 
 const Footer = () => {
   const {theme} = useContext(ThemeContext)
-  const {outerPadding, outerPaddingXL, outerPaddingMD, outerPaddingSM} = getTheme(theme)
+  const {outerPadding, outerPaddingXL, outerPaddingMD, outerPaddingSM, borderColor} = getTheme(theme)
   return (
     <footer css={{
       padding: `125px ${outerPadding} 0 ${outerPadding}`,
@@ -22,56 +22,58 @@ const Footer = () => {
       }
     }}>
       <div className='container' css={{
-        borderTop: '1px solid rgba(9, 25, 43, 0.09)'
+        borderTop: `1px solid ${borderColor}`
       }}>
         <div className='flexbox' css={{
           height: '8.5rem',
-          justifyContent: 'flex-end'
+          justifyContent: 'space-between',
+          [mq('sm')]: {
+            justifyContent: 'space-around',
+            flexDirection: 'column-reverse'
+          }
         }}>
-          <button className='anchor' css={{
-            fontFamily: 'raleway, sans-serif',
+          <span css={{
             fontWeight: '300',
             fontSize: '1.4rem',
             lineHeight: '156.57%',
             letterSpacing: '0.02em',
-            textDecoration: 'inherit',
-            color: 'inherit',
-            '&:hover::before': {
-              content: '"© 2021 Frank de Vries. Alle rechten voorbehouden"'
-            },
-            '&:hover span': {
-              display: 'none'
+            [mq('sm')]: {
+              fontSize: '1rem'
             }
-          }}>
-            <span>Auteursrecht</span>
-          </button>
+          }}>© 2021 Frank de Vries. Alle rechten voorbehouden</span>
           <div css={{
-            '&::before': {
-              content: '"|"',
-              margin: '0 2rem'
-            }
-          }} />
-          <Link className='anchor'
-            css={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <Link className='anchor'
+              css={{
+                fontWeight: '300',
+                fontSize: '1.4rem',
+                lineHeight: '156.57%',
+                letterSpacing: '0.02em'
+              }}
+              to='/privacy/'>Privacy</Link>
+            <div css={{'&::before': {content: '"|"', margin: '0 2rem'}}} />
+            <a css={{
               fontWeight: '300',
               fontSize: '1.4rem',
               lineHeight: '156.57%',
-              letterSpacing: '0.02em'
-            }}
-            to='/privacy/'>Privacy</Link>
-          <div css={{
-            '&::before': {
-              content: '"|"',
-              margin: '0 2rem'
-            }
-          }} />
-          <a css={{
-            fontWeight: '300',
-            fontSize: '1.4rem',
-            lineHeight: '156.57%',
-            letterSpacing: '0.02em',
-            cursor: 'pointer'
-          }} className="anchor" href="/feeds/rss.xml"><RSSFeedIcon /> RSS Feed</a>
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              position: 'relative',
+              '&::before': {
+                display: 'inline-block',
+                width: '15px',
+                content: '""'
+              }
+            }} className="anchor" href="/feeds/rss.xml">
+              <RSSFeedIcon css={{
+                position: 'absolute',
+                left: '0'
+              }} />
+              RSS Feed
+            </a>
+          </div>
         </div>
       </div>
     </footer>

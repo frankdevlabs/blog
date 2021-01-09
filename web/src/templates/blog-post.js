@@ -5,7 +5,6 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import ThemeProvider from '../components/ThemeProvider'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -44,7 +43,6 @@ const BlogPostTemplate = props => {
   const {data, errors} = props
   const post = data && data.post
   return (
-    <ThemeProvider>
       <Layout>
         {errors && <SEO title='GraphQL Error' />}
         {post && <SEO title={post.title || 'Untitled'}
@@ -60,7 +58,6 @@ const BlogPostTemplate = props => {
         )}
         {post && <BlogPost {...post} />}
       </Layout>
-    </ThemeProvider>
   )
 }
 

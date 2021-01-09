@@ -2,7 +2,7 @@ import React from 'react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import ThemeProvider from '../components/ThemeProvider'
+import ThemeProvider from '../theme/ThemeProvider'
 
 const NotFoundPage = () => (
   <ThemeProvider>

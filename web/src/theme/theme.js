@@ -1,9 +1,11 @@
+/**
+ * Implementation of dark-mode based upon https://github.com/divyanshu013/blog
+ * MIT License. Copyright (c) (2019 - Now) Divyanshu Maithani
+ */
 import {useState, useEffect} from 'react'
 
-export const COLOR_PRIMARY = 'salmon'
-
 export const CUBIC_BEZIER_TRANSITION = '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
-// export const EASE_IN_OUT_TRANSITION = '0.3s ease-in-out'
+export const EASE_IN_OUT_TRANSITION = '0.2s ease-in-out'
 export const BACKGROUND_TRANSITION_TIME = '0.75s'
 
 /**
@@ -12,7 +14,9 @@ export const BACKGROUND_TRANSITION_TIME = '0.75s'
  */
 export const useTheme = () => {
   const storedTheme = typeof window !== 'undefined' && window.localStorage.getItem('theme')
-  const [theme, setTheme] = useState(storedTheme || 'light')
+  const mql = window.matchMedia('(prefers-color-scheme: dark)')
+  const prefersDarkFromMQ = mql.matches ? 'dark' : false
+  const [theme, setTheme] = useState(storedTheme || prefersDarkFromMQ || 'light')
   const toggleTheme = () =>
     setTheme(prevTheme => {
       return prevTheme === 'light' ? 'dark' : 'light'
@@ -38,17 +42,13 @@ export const getTheme = theme =>
         background: '#FEFBF4',
         color: '#09192B',
         secondary: '#D9BF65',
-        muted: 'hsla(0, 0%, 0%, 0.6)',
-        borderColor: 'hsla(212, 65%, 100%, 0.09)',
-        borderHoverColor: 'transparent',
+        borderColor: 'rgba(9, 25, 43, 0.09)',
         ...baseTheme
       }
     : {
         background: '#09192B',
         color: '#FEFBF4',
         secondary: '#D9BF65',
-        muted: 'hsla(0, 0%, 100%, 0.60)',
-        borderColor: 'hsla(212, 65%, 100%, 0.09)',
-        borderHoverColor: COLOR_PRIMARY,
+        borderColor: '#D9BF65',
         ...baseTheme
       }

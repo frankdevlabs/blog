@@ -8,10 +8,10 @@ import {
   getTheme,
   CUBIC_BEZIER_TRANSITION,
   BACKGROUND_TRANSITION_TIME
-} from '../lib/theme'
+} from './theme'
+import {LIGHT_CODE_THEME, DARK_CODE_THEME} from '../styles/code'
+
 import mq from '../lib/media'
-// import PRISM_THEME_LIGHT from '../styles/prism-theme-light'
-// import PRISM_THEME_DARK from '../styles/prism-theme-dark'
 
 const ThemeProvider = ({children}) => {
   const [theme, toggleTheme] = useTheme()
@@ -251,6 +251,10 @@ const ThemeProvider = ({children}) => {
             margin: '3.4rem 0'
           }
         })} />
+        <Global styles={css(theme === 'dark' ? DARK_CODE_THEME : LIGHT_CODE_THEME)} />
+        <Global
+          styles={css(`body.dark {${DARK_CODE_THEME}}`)}
+        />
         <div
           className='theme-wrapper'
           css={{

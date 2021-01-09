@@ -4,8 +4,8 @@ import DarkIcon from './icons/logo-dark.svg'
 import {Link} from 'gatsby'
 import DarkModeIcon from './icons/dark-mode.svg'
 import LightModeIcon from './icons/light-mode.svg'
-import ThemeContext from './ThemeContext'
-import {getTheme} from '../lib/theme'
+import ThemeContext from '../theme/ThemeContext'
+import {getTheme} from '../theme/theme'
 import mq from '../lib/media'
 
 const Header = () => {

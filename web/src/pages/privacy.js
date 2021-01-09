@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import ThemeProvider from '../components/ThemeProvider'
 import {graphql, Link} from 'gatsby'
 import PortableText from '../components/portableText'
 import {toPlainText} from '../lib/helpers'
 import mq from '../lib/media'
 import ReadMore from '../components/readMore'
+import ThemeContext from '../theme/ThemeContext'
+import {getTheme} from '../theme/theme'
 
 export const query = graphql`
   query PrivacyPageQuery {
@@ -30,8 +31,9 @@ export const query = graphql`
 `
 
 const PrivacyPage = props => {
+  const {theme} = useContext(ThemeContext)
+  const {borderColor} = getTheme(theme)
   return (
-    <ThemeProvider>
     <Layout>
       <SEO
         title={props.data.sanityPage.title}
@@ -59,7 +61,7 @@ const PrivacyPage = props => {
             marginLeft: 'auto',
             marginRight: 'auto',
             maxWidth: '688px',
-            borderBottom: '1px solid rgba(9, 25, 43, 0.09)'
+            borderBottom: `1px solid ${borderColor}`
           }}
           >
             {props.data.sanityPage._rawExcerpt && <PortableText blocks={props.data.sanityPage._rawExcerpt} />}
@@ -71,7 +73,6 @@ const PrivacyPage = props => {
         </p>
       </ReadMore>
     </Layout>
-    </ThemeProvider>
   )
 }
 

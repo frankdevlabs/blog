@@ -1,6 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Img from 'gatsby-image'
-import ThemeProvider from '../components/ThemeProvider'
 import Layout from '../containers/layout'
 import SEO from '../components/seo'
 import {graphql, Link} from 'gatsby'
@@ -8,6 +7,8 @@ import PortableText from '../components/portableText'
 import SocialShare from '../components/share'
 import ReadMore from '../components/readMore'
 import mq from '../lib/media'
+import ThemeContext from '../theme/ThemeContext'
+import {getTheme} from '../theme/theme'
 
 export const query = graphql`
   query AboutPageQuery {
@@ -30,8 +31,9 @@ const AboutPage = props => {
   const title = 'Over mij'
   const url = process.env.GATSBY_HOME_PAGE + props.path
   const image = props.data.image.childImageSharp.fluid
+  const {theme} = useContext(ThemeContext)
+  const {borderColor} = getTheme(theme)
   return (
-    <ThemeProvider>
       <Layout>
         <SEO
           title='Over mij'
@@ -75,7 +77,7 @@ const AboutPage = props => {
               marginLeft: 'auto',
               marginRight: 'auto',
               maxWidth: '688px',
-              borderBottom: '1px solid rgba(9, 25, 43, 0.09)'
+              borderBottom: `1px solid ${borderColor}`
             }}
             >
               {props.data.bio._rawBio && <PortableText blocks={props.data.bio._rawBio} />}
@@ -96,7 +98,6 @@ const AboutPage = props => {
           </p>
         </ReadMore>
       </Layout>
-    </ThemeProvider>
   )
 }
 
