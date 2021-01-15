@@ -63,6 +63,13 @@ export default {
       ]
     },
     {
+      name: 'intro',
+      type: 'bodyPortableText',
+      title: 'Introduction',
+      description:
+        'This the introduction of the subject (above the image)'
+    },
+    {
       name: 'body',
       type: 'bodyPortableText',
       title: 'Body'

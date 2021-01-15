@@ -25,6 +25,7 @@ export const query = graphql`
       }
       _rawExcerpt(resolveReferences: {maxDepth: 5})
       _rawBody(resolveReferences: {maxDepth: 5})
+      _rawIntro(resolveReferences: {maxDepth: 5})
       mainImage {
         asset {
           fluid (maxWidth: 1160) {

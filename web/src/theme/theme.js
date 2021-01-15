@@ -43,6 +43,7 @@ export const getTheme = theme =>
         color: '#09192B',
         secondary: '#D9BF65',
         borderColor: 'rgba(9, 25, 43, 0.09)',
+        codeBackground: '#f5f2f0',
         ...baseTheme
       }
     : {
@@ -50,5 +51,6 @@ export const getTheme = theme =>
         color: '#FEFBF4',
         secondary: '#D9BF65',
         borderColor: '#D9BF65',
+        codeBackground: '#272822',
         ...baseTheme
       }

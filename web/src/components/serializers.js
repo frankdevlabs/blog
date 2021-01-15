@@ -53,7 +53,7 @@ const serializers = {
     },
     // eslint-disable-next-line react/display-name
     link: ({mark, children}) => {
-      return <a className='anchor' href={mark.href}>{children}</a>
+      return <a target="_blank" rel="noopener noreferrer external" className='anchor' href={mark.href}>{children}</a>
     }
   }
 }

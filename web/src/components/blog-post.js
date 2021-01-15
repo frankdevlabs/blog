@@ -39,7 +39,7 @@ const BlogPost = (props) => {
               |
           `}<SocialShare href={url} title={props.title} />
           </div>
-          <div className='snippit-xl' css={{maxWidth: '863px'}}><PortableText blocks={props._rawExcerpt} /></div>
+          <div className='snippit-xl' css={{maxWidth: '863px'}}><PortableText blocks={props._rawIntro} /></div>
           <div css={{
             height: '44.5rem',
             overflow: 'hidden',

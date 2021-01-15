@@ -247,8 +247,15 @@ const ThemeProvider = ({children}) => {
             }
           },
           'ol,ul': {
-            paddingLeft: '2rem',
+            paddingLeft: '4rem',
             margin: '3.4rem 0'
+          },
+          code: {
+            background: `${currentTheme.codeBackground}`,
+            fontFamily: 'Consolas,Monaco,\'Andale Mono\',\'Ubuntu Mono\',monospace'
+          },
+          '.code-container': {
+            marginBottom: '3.4rem'
           }
         })} />
         <Global styles={css(theme === 'dark' ? DARK_CODE_THEME : LIGHT_CODE_THEME)} />
