@@ -37,7 +37,7 @@ const AboutPage = props => {
       <Layout>
         <SEO
           title='Over mij'
-          description='bla bla'
+          description='In mijn blog deel ik als jurist mijn fascinatie voor tech.'
           type='website'
           path='/'
         />
@@ -70,7 +70,7 @@ const AboutPage = props => {
               maxWidth: '863px',
               paddingTop: '1.2rem'
             }}>
-              In mijn blog deel ik als jurist mijn facinatie voor tech.
+              In mijn blog deel ik als jurist mijn fascinatie voor tech.
             </div>
             <div className='paragraph' css={{
               paddingTop: '5.6rem',

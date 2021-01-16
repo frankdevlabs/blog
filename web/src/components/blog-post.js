@@ -47,13 +47,6 @@ const BlogPost = (props) => {
             position: 'relative',
             marginTop: '1.6rem'
           }}>
-            <div className='overflow' css={{
-              height: '100%',
-              width: '100%',
-              position: 'absolute',
-              backgroundImage: 'linear-gradient(0deg, rgba(254, 251, 244, 0.51), rgba(254, 251, 244, 0.51))',
-              zIndex: '1'
-            }} />
             <Img css={{
               height: '100%',
               borderRadius: '4px'
