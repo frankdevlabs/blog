@@ -170,6 +170,9 @@ const ThemeProvider = ({children}) => {
             fontSize: '9.8rem',
             lineHeight: '96.8%',
             letterSpacing: '-0.1em',
+            [mq('lg')]: {
+              fontSize: '8.5rem'
+            },
             [mq('md')]: {
               fontSize: '7.1rem'
             },
@@ -216,13 +219,13 @@ const ThemeProvider = ({children}) => {
             lineHeight: '155.6%'
           },
           '.snippit-xl': {
-            fontSize: '2.5rem',
+            fontSize: '2.25rem',
             fontStyle: 'normal',
             lineHeight: '3.5rem',
             letterSpacing: '0.01em',
             textAlign: 'left',
-            [mq('sm')]: {
-              fontSize: '2.3rem'
+            [mq('xl')]: {
+              fontSize: '2.2rem'
             }
           },
           a: {
