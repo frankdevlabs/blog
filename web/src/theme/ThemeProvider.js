@@ -188,6 +188,13 @@ const ThemeProvider = ({children}) => {
             letterSpacing: '0.02em',
             textDecorationLine: 'underline'
           },
+          'h4.heading-4': {
+            fontFamily: 'Ubuntu, sans-serif',
+            fontWeight: '400',
+            fontSize: '1.8rem',
+            lineHeight: '138.6%',
+            letterSpacing: '0.03em'
+          },
           '.paragraph': {
             lineHeight: '3.2rem'
           },
@@ -200,8 +207,11 @@ const ThemeProvider = ({children}) => {
           '.paragraph > div > h2:not(:last-child)': {
             margin: '4rem 0 1.2rem 0'
           },
-          '.paragraph > div > h3:not(:last-child), .paragraph > div > h4:not(:last-child)': {
+          '.paragraph > div > h3:not(:last-child)': {
             margin: '4rem 0 1rem 0'
+          },
+          '.paragraph > div > h4:not(:last-child)': {
+            margin: '4rem 0 0rem 0'
           },
           '.paragraph li:not(:last-child)': {
             marginBottom: '1rem'

@@ -39,6 +39,7 @@ export default {
     select: {
       title: 'name',
       subtitle: 'slug.current',
+      slug: 'slug',
       media: 'image'
     }
   }

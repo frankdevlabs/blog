@@ -14,8 +14,8 @@ export const query = graphql`
     sanityPage(slug: {current: {eq: "privacy"}}) {
       id
       title
-      _rawExcerpt
-      _rawBody
+      _rawExcerpt(resolveReferences: {maxDepth: 5})
+      _rawBody(resolveReferences: {maxDepth: 5})
       slug {
         current
       }
@@ -64,7 +64,7 @@ const PrivacyPage = props => {
             borderBottom: `1px solid ${borderColor}`
           }}
           >
-            {props.data.sanityPage._rawExcerpt && <PortableText blocks={props.data.sanityPage._rawExcerpt} />}
+            {props.data.sanityPage._rawExcerpt && <PortableText blocks={props.data.sanityPage._rawBody} />}
           </div>
         </div>
       </section>

@@ -14,7 +14,9 @@ export default {
           {title: 'Emphasis', value: 'em'},
           {title: 'Code', value: 'code'}
         ],
-        annotations: []
+        annotations: [
+          {type: 'internalLink'}
+        ]
       }
     }
   ]

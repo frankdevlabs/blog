@@ -42,14 +42,20 @@ const serializers = {
   marks: {
     // eslint-disable-next-line react/display-name
     internalLink: ({children, mark}) => {
-      if (mark.reference) {
+      if (mark.reference && mark.reference.slug && mark.reference._type === 'post') {
         return (
           <Link className='anchor' to={getBlogUrl(mark.reference.publishedAt, mark.reference.slug)}>
             {children}
           </Link>
         )
+      } else if (mark.reference && mark.reference.slug && mark.reference._type === 'author') {
+        return (
+          <Link className='anchor' to={'/' + mark.reference.slug.current + '/'}>
+            {children}
+          </Link>
+        )
       }
-      return <></>
+      return <><mark>{children}</mark></>
     },
     // eslint-disable-next-line react/display-name
     link: ({mark, children}) => {
