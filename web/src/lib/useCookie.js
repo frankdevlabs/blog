@@ -78,4 +78,6 @@ export default function useCookie (
 
     return [value, setCookie, clearCookie]
   }
+  const [value, setValue] = useState(0)
+  return [value, setValue]
 }
