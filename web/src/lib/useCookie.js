@@ -18,10 +18,10 @@ export default function useCookie (
       return value
     })
 
-    const setCookie = (value, options) => {
+    const setCookie = (value) => {
       const cookieOptions = {
         expires: 0,
-        domain: process.env.COOKIE_DOMAIN,
+        domain: process.env.GATSBY_COOKIE_DOMAIN,
         path: '/',
         secure: true,
         httpOnly: false,

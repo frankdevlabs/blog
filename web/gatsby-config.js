@@ -59,6 +59,42 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Frank\'s Blog',
+        short_name: 'Frank\'s Blog',
+        description: 'Hier schrijf ik over legal en tech.',
+        start_url: '/',
+        lang: 'nl',
+        background_color: '#FEFBF4',
+        theme_color: '#09192B',
+        display: 'standalone',
+        icon: 'src/assets/img/512-512-favicon.svg'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: `${process.env.GTM_ID}`,
+
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        // Defaults to null
+        defaultDataLayer: {
+          platform: 'gatsby'
+        },
+
+        // Name of the event that is triggered
+        // on every Gatsby route change.
+        // Defaults to gatsby-route-change
+        routeChangeEventName: 'route-change'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-feed',
       options: {
         query: `
