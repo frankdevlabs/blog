@@ -44,6 +44,10 @@ export const getTheme = theme =>
         secondary: '#D9BF65',
         borderColor: 'rgba(9, 25, 43, 0.09)',
         codeBackground: '#f5f2f0',
+        button: '#09192B',
+        buttonText: '#FEFBF4',
+        buttonHover: 'rgba(9, 25, 43, 0.93)',
+        modalBackground: '#FEFEFE',
         ...baseTheme
       }
     : {
@@ -52,5 +56,9 @@ export const getTheme = theme =>
         secondary: '#D9BF65',
         borderColor: '#D9BF65',
         codeBackground: '#272822',
+        button: '#D9BF65',
+        buttonText: '#FEFBF4',
+        buttonHover: 'rgba(217, 191, 101, 0.9)',
+        modalBackground: '#0E2845',
         ...baseTheme
       }

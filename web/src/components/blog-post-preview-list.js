@@ -3,7 +3,7 @@ import {Link} from 'gatsby'
 import {format} from 'date-fns'
 import nl from 'date-fns/locale/nl'
 import Img from 'gatsby-image'
-import PortableText from './portableText'
+import PortableText from './portable-text'
 import {getBlogUrl} from '../lib/helpers'
 
 const BlogPostPreviewList = (props) => {
