@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -8,8 +9,14 @@ const NotFoundPage = () => (
   <ThemeProvider>
     <Layout>
       <SEO title='404: Not found' />
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <section>
+        <div className="container">
+          <h1 css={{paddingTop: '13vh'}} className="heading-1">ERROR! Pagina niet gevonden!</h1>
+          <p className="paragraph" css={{paddingTop: '2rem'}}>
+            Deze pagina bestaat niet.... <Link className="anchor" to="/">Ga terug</Link>
+          </p>
+        </div>
+      </section>
     </Layout>
   </ThemeProvider>
 )
