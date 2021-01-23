@@ -17,7 +17,6 @@ const BlogPost = (props) => {
     // call the highlightAll() function to style our code blocks
     Prism.highlightAll()
   })
-
   const url = process.env.GATSBY_HOME_PAGE + getBlogUrl(props.publishedAt, props.slug.current)
   const {theme} = useContext(ThemeContext)
   const {borderColor} = getTheme(theme)
@@ -53,6 +52,16 @@ const BlogPost = (props) => {
             }} fluid={props.mainImage.asset.fluid} alt={props.mainImage.alt}
             />
           </div>
+          <figcaption
+            css={{
+              fontSize: '1.4rem',
+              fontStyle: 'normal',
+              fontWeight: '300',
+              lineHeight: '2.2rem',
+              letterSpacing: '0em',
+              textAlign: 'center'
+            }}
+          >{props.mainImage.caption}</figcaption>
           <div className='paragraph' css={{
             paddingTop: '5.6rem',
             marginLeft: 'auto',

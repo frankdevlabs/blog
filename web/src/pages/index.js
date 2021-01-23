@@ -82,10 +82,7 @@ const IndexPage = props => {
           path='/'
         />
         <section className='hero-section' css={{
-          paddingBottom: '25vh',
-          [mq('md')]: {
-            paddingBottom: '15vh'
-          },
+          paddingBottom: '12vh',
           [mq('sm')]: {
             paddingBottom: '5vh'
           }

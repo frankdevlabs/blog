@@ -29,6 +29,7 @@ const Header = () => {
           <div css={{
             marginBottom: '-1.6rem',
             [mq('sm')]: {
+              marginBottom: '-1rem',
               maxWidth: '35vw',
               svg: {
                 width: '100%'
@@ -56,7 +57,7 @@ const Header = () => {
             }}>over mij</Link>
             <button
               aria-label='Light and dark mode switch'
-              onClick={toggleTheme}
+              onClick={() => toggleTheme(theme)}
               css={{
                 '&:hover svg': {
                   stroke: secondary
@@ -75,7 +76,7 @@ const Header = () => {
                 }
               }}
             >
-              {theme === 'light' ? <DarkModeIcon className='icon' /> : <LightModeIcon className='icon' />}
+              {theme === 'light' ? <LightModeIcon className='icon' /> : <DarkModeIcon className='icon' />}
             </button>
           </div>
         </div>

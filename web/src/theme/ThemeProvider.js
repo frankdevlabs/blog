@@ -168,7 +168,7 @@ const ThemeProvider = ({children}) => {
             fontFamily: 'Ubuntu, sans-serif',
             fontWeight: '700',
             fontSize: '9.8rem',
-            lineHeight: '96.8%',
+            lineHeight: '104.8%',
             letterSpacing: '-0.1em',
             [mq('lg')]: {
               fontSize: '8.5rem'
@@ -177,7 +177,8 @@ const ThemeProvider = ({children}) => {
               fontSize: '7.1rem'
             },
             [mq('sm')]: {
-              fontSize: '5rem'
+              fontSize: '5rem',
+              letterSpacing: '-0.05em'
             }
           },
           'h3.heading-3': {

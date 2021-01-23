@@ -18,6 +18,7 @@ export const query = graphql`
       }
       mainImage {
         alt
+        caption
       }
       title
       slug {

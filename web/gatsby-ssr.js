@@ -6,7 +6,7 @@ const applyDarkModeClass = `
     var mql = window.matchMedia('(prefers-color-scheme: dark)')
     var prefersDarkFromMQ = mql.matches
     var persistedPreference = localStorage.getItem('theme')
-    var hasUsedToggle = typeof persistedPreference === 'string'
+    var hasUsedToggle = typeof persistedPreference === 'string' && persistedPreference !== 'auto'
 
     try {
       if ((hasUsedToggle && persistedPreference === 'dark') || prefersDarkFromMQ) {

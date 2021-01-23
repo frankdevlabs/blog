@@ -14,23 +14,27 @@ export const BACKGROUND_TRANSITION_TIME = '0.75s'
  */
 export const useTheme = () => {
   let _theme = 'light'
-  const storedTheme = typeof window !== 'undefined' && window.localStorage.getItem('theme')
+
+  const storedTheme = (typeof window !== 'undefined' && window.localStorage.getItem('theme')) || 'auto'
   const mql = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)')
   const prefersDarkFromMQ = typeof window !== 'undefined' && mql.matches ? 'dark' : false
 
-  if (prefersDarkFromMQ) _theme = prefersDarkFromMQ
-  else if (storedTheme) _theme = storedTheme
+  if (storedTheme !== 'auto') _theme = storedTheme
+  else if (prefersDarkFromMQ) _theme = prefersDarkFromMQ
 
   const [theme, setTheme] = useState(_theme)
-  const toggleTheme = () =>
-    setTheme(prevTheme => {
+  const [mode, setMode] = useState(storedTheme === 'auto' ? 'auto' : 'manual')
+  const toggleTheme = (prevTheme) => {
+    if (mode === 'auto') setMode(() => 'manual')
+    setTheme(() => {
       return prevTheme === 'light' ? 'dark' : 'light'
     })
+  }
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && mode === 'manual') {
       window.localStorage.setItem('theme', theme)
     }
-  }, [theme])
+  }, [theme, mode])
   return [theme, toggleTheme]
 }
 
