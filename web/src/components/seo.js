@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
 
 function SEO ({description, lang, meta, keywords, title, image, type, path}) {
+  const GOOGLE_FONTS_PATH = 'https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700|Raleway:300,400,400i,700&display=swap'
   return (
     <StaticQuery
       query={detailsQuery}
@@ -23,7 +24,8 @@ function SEO ({description, lang, meta, keywords, title, image, type, path}) {
             title={title}
             titleTemplate={title === siteTitle ? '%s' : `%s | ${siteTitle}`}
             link={[
-              {rel: 'canonical', href: process.env.GATSBY_HOME_PAGE + path}
+              {rel: 'canonical', href: process.env.GATSBY_HOME_PAGE + path},
+              {rel: 'preload', href: GOOGLE_FONTS_PATH, as: 'style', onLoad: 'this.onload=null;this.rel=\'stylesheet\''}
             ]}
             meta={[
               {
@@ -88,7 +90,11 @@ function SEO ({description, lang, meta, keywords, title, image, type, path}) {
                   : []
               )
               .concat(meta)}
-          />
+          >
+            <noscript>
+              {`<link href=${GOOGLE_FONTS_PATH} rel='stylesheet' type='text/css' />`}
+            </noscript>
+          </Helmet>
         )
       }}
     />

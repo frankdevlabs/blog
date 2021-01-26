@@ -35,16 +35,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [
-          'Ubuntu:400,300,500,700',
-          'Raleway:300,400,400i,700'
-        ],
-        display: 'swap'
-      }
-    },
-    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {

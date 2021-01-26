@@ -66,7 +66,7 @@ export const getTheme = theme =>
         borderColor: '#D9BF65',
         codeBackground: '#272822',
         button: '#D9BF65',
-        buttonText: '#FEFBF4',
+        buttonText: '#09192B',
         buttonHover: 'rgba(217, 191, 101, 0.9)',
         modalBackground: '#0E2845',
         ...baseTheme

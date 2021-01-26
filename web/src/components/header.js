@@ -35,7 +35,7 @@ const Header = () => {
                 width: '100%'
               }
             }
-          }}><Link to='/'>{theme === 'light' ? <LightIcon /> : <DarkIcon />}</Link>
+          }}><Link aria-label="home-button" to='/'>{theme === 'light' ? <LightIcon /> : <DarkIcon />}</Link>
           </div>
           <div css={{
             display: 'flex'
