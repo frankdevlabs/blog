@@ -35,7 +35,7 @@ const ThemeProvider = ({children}) => {
             },
             html: {
               scrollbarColor:
-                theme === 'dark' ? `${darkTheme.muted} ${darkTheme.background}` : 'auto',
+                theme === 'dark' ? `${darkTheme.borderColor} ${darkTheme.background}` : 'auto',
               fontSize: '62.5%',
               [mq('md')]: {
                 fontSize: '56%'
@@ -56,9 +56,6 @@ const ThemeProvider = ({children}) => {
               '.theme-wrapper': {
                 background: darkTheme.background,
                 color: darkTheme.color
-              },
-              '.muted': {
-                color: darkTheme.muted
               }
             },
             select: {

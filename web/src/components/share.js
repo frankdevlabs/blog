@@ -16,7 +16,7 @@ const SocialLink = props => {
 const Share = props => {
   return (
     <>
-      Deel dit blog via
+      {props.children}
       <SocialLink href={`https://facebook.com/sharer/sharer.php?u=${props.href}`}>
         Facebook
       </SocialLink>,

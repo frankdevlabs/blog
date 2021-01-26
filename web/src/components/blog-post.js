@@ -36,7 +36,7 @@ const BlogPost = (props) => {
               | ${props.readingTimeInMinutes}
               ${props.readingTimeInMinutes > 0 ? 'minuten' : 'minuut'} lezen
               |
-          `}<SocialShare href={url} title={props.title} />
+          `}<SocialShare href={url} title={props.title}>Deel dit blog via</SocialShare>
           </div>
           <div className='snippit-xl' css={{maxWidth: '863px'}}><PortableText blocks={props._rawIntro} /></div>
           <div css={{
@@ -79,7 +79,7 @@ const BlogPost = (props) => {
               letterSpacing: '0.02em',
               textAlign: 'right',
               padding: '2.6rem 0 3.6rem 0'
-            }}><SocialShare href={url} title={props.title} /></div>
+            }}><SocialShare href={url} title={props.title}>Deel dit blog via</SocialShare></div>
           </div>
         </article>
       </section>

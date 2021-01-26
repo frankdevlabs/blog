@@ -39,7 +39,7 @@ const PrivacyPage = props => {
         title={props.data.sanityPage.title}
         description={toPlainText(props.data.sanityPage._rawExcerpt)}
         type='website'
-        path={'/' + props.data.sanityPage.slug.current}
+        path={'/' + props.data.sanityPage.slug.current + '/'}
         image={props.data.sanityPage.mainImage}
       />
       <section className='privacy-section'>

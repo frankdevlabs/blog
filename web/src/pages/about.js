@@ -39,7 +39,7 @@ const AboutPage = props => {
           title='Over mij'
           description='In mijn blog deel ik als jurist mijn fascinatie voor tech.'
           type='website'
-          path='/'
+          path={props.path}
         />
         <section className='about-section'>
           <div className='container' css={{
@@ -89,7 +89,7 @@ const AboutPage = props => {
                 letterSpacing: '0.02em',
                 textAlign: 'right',
                 padding: '2.6rem 0 3.6rem 0'
-              }}><SocialShare href={url} title={title} /></div>
+              }}><SocialShare href={url} title={title}>Deel deze pagina via</SocialShare></div>
             </div>
           </div>
         </section>
