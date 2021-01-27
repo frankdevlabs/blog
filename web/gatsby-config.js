@@ -63,6 +63,15 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-preconnect',
+      options: {
+        domains: [
+          {domain: 'https://fonts.gstatic.com', crossOrigin: 'anonymous'},
+          {domain: 'https://www.googletagmanager.com', crossOrigin: 'anonymous'}
+        ]
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: `${process.env.GTM_ID}`,
