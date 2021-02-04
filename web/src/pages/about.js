@@ -29,7 +29,7 @@ export const query = graphql`
 
 const AboutPage = props => {
   const title = 'Over mij'
-  const url = process.env.GATSBY_HOME_PAGE + props.path
+  const url = process.env.GATSBY_HOME_PAGE + '/about/'
   const image = props.data.image.childImageSharp.fluid
   const {theme} = useContext(ThemeContext)
   const {borderColor} = getTheme(theme)
