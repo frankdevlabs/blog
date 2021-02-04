@@ -39,7 +39,7 @@ const AboutPage = props => {
           title='Over mij'
           description='In mijn blog deel ik als jurist mijn fascinatie voor tech.'
           type='website'
-          path={props.path}
+          path="/about/"
         />
         <section className='about-section'>
           <div className='container' css={{
