@@ -46,6 +46,17 @@ async function createBlogPostPages (graphql, actions) {
     })
 }
 
+async function createRedirects (actions) {
+  const {createRedirect} = actions
+  createRedirect({
+    fromPath: `http://www.${process.env.GATSBY_DOMAIN_NAME}/*`,
+    toPath: `https://${process.env.GATSBY_DOMAIN_NAME}/:splat`,
+    isPermanent: true,
+    force: true
+  })
+}
+
 exports.createPages = async ({graphql, actions}) => {
   await createBlogPostPages(graphql, actions)
+  await createRedirects(actions)
 }

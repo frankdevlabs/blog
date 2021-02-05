@@ -84,7 +84,7 @@ const BlogPost = (props) => {
         </article>
       </section>
       <ReadMore>
-        <p>Bekijk <Link className='anchor' to='/about'>mijn</Link>{' '}
+        <p>Bekijk <Link className='anchor' to='/about/'>mijn</Link>{' '}
           <Link className='anchor' to='/'>andere blogs.</Link>
         </p>
       </ReadMore>
