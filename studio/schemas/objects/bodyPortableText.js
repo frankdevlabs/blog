@@ -1,5 +1,3 @@
-import {MdLaunch, MdPermIdentity} from 'react-icons/md'
-
 export default {
   name: 'bodyPortableText',
   type: 'array',
@@ -32,19 +30,9 @@ export default {
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
-          {
-            name: 'link',
-            type: 'object',
-            title: 'External Link',
-            fields: [
-              {
-                title: 'URL',
-                name: 'href',
-                type: 'url'
-              }
-            ]
-          },
-          {type: 'internalLink'}
+          {type: 'link'},
+          {type: 'internalLink'},
+          {type: 'note'}
         ]
       },
       of: [{type: 'authorReference'}]

@@ -3,9 +3,11 @@ import BlockContent from '@sanity/block-content-to-react'
 import {Link} from 'gatsby'
 import Figure from './figure'
 import {getBlogUrl} from '../lib/helpers'
+import Note from './note'
 
 const BlockRenderer = props => {
   const {style = 'normal'} = props.node
+  if (style === 'normal-note') return <span>{props.children}</span>
 
   if (/^h\d/.test(style)) {
     const level = style.replace(/[^\d]/g, '')
@@ -60,6 +62,12 @@ const serializers = {
     // eslint-disable-next-line react/display-name
     link: ({mark, children}) => {
       return <a target="_blank" rel="noopener noreferrer external" className='anchor' href={mark.href}>{children}</a>
+    },
+    // eslint-disable-next-line react/display-name
+    note: ({mark, children}) => {
+      return (
+        <Note mark={mark}>{children}</Note>
+      )
     }
   }
 }

@@ -25,7 +25,7 @@ export const query = graphql`
         current
       }
       _rawExcerpt(resolveReferences: {maxDepth: 5})
-      _rawBody(resolveReferences: {maxDepth: 5})
+      _rawBody(resolveReferences: {maxDepth: 8})
       _rawIntro(resolveReferences: {maxDepth: 5})
       mainImage {
         asset {

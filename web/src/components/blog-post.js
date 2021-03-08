@@ -67,7 +67,8 @@ const BlogPost = (props) => {
             marginLeft: 'auto',
             marginRight: 'auto',
             maxWidth: '688px',
-            borderBottom: `1px solid ${borderColor}`
+            borderBottom: `1px solid ${borderColor}`,
+            position: 'relative'
           }}
           >
             {props._rawBody && <PortableText blocks={props._rawBody} />}

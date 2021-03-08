@@ -1,11 +1,11 @@
-import {MdLaunch} from 'react-icons/md'
+import {MdLink} from 'react-icons/md'
 
 export default {
   name: 'internalLink',
   type: 'object',
   title: 'Internal Link',
   blockEditor: {
-    icon: MdLaunch
+    icon: MdLink
   },
   fields: [
     {
