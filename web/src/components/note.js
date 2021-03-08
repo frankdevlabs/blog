@@ -8,7 +8,7 @@ import ThemeContext from '../theme/ThemeContext'
 const Note = ({mark, children}) => {
   const [touched, setTouched] = useState(false)
   const {theme} = useContext(ThemeContext)
-  const {background, color} = getTheme(theme)
+  const {color} = getTheme(theme)
 
   const toggleTouched = () => setTouched(prev => !prev)
   return (
@@ -62,7 +62,7 @@ const Note = ({mark, children}) => {
         transition: `border ${EASE_IN_OUT_TRANSITION}`,
         [mq('xl')]: {
           position: 'fixed',
-          color: background,
+          color: '#FEFBF4',
           opacity: '0',
           visibility: 'hidden',
           top: '50%',
@@ -79,6 +79,26 @@ const Note = ({mark, children}) => {
             display: 'inline'
           }
         }}>
+          <button
+            css={{
+              display: 'none',
+              [mq('xl')]: {
+                display: 'inline',
+                position: 'absolute',
+                right: '-0.5rem',
+                top: '-0.5rem',
+                background: '#D9BF65',
+                borderRadius: '50%',
+                height: '2.2rem',
+                width: '2.2rem',
+                textAlign: 'center',
+                color: '#09192B'
+              }
+            }}
+            onClick={toggleTouched}
+          >
+            X
+          </button>
           <InfoIcon/>{' '}
           <PortableText blocks={mark.content}/>
         </span>
