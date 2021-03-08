@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import PortableText from './portable-text'
 import InfoIcon from './icons/info.svg'
 import mq from '../lib/media'
-import {getTheme, EASE_IN_OUT_TRANSITION} from '../theme/theme'
+import {EASE_IN_OUT_TRANSITION, getTheme} from '../theme/theme'
 import ThemeContext from '../theme/ThemeContext'
 
 const Note = ({mark, children}) => {
@@ -22,12 +22,17 @@ const Note = ({mark, children}) => {
       '& a': {
         cursor: 'pointer'
       },
-      '&:hover, .note--touched': {
+      '&:hover': {
         borderBottom: '1px solid #D9BF65'
       },
-      '&:hover .note__text, &.note--touched .note__text': {
+      '&:hover .note__text': {
         border: '1px dashed #D9BF65',
         borderRadius: '2px',
+        [mq('xl')]: {
+          border: 'unset'
+        }
+      },
+      '&.note--touched .note__text': {
         [mq('xl')]: {
           border: 'unset',
           opacity: '1',
