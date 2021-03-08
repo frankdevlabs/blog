@@ -10,9 +10,12 @@ const Note = ({mark, children}) => {
   const {theme} = useContext(ThemeContext)
   const {color} = getTheme(theme)
 
-  const toggleTouched = () => setTouched(prev => !prev)
+  const toggleTouched = (e) => {
+    e.stopPropagation()
+    return setTouched(prev => !prev)
+  }
   return (
-    <span className={`note ${touched ? 'note--touched' : ''}`} onTouchStart={toggleTouched} css={{
+    <span className={`note ${touched ? 'note--touched' : ''}`} onClick={toggleTouched} css={{
       borderBottom: '1px dashed #D9BF65',
       transition: `border ${EASE_IN_OUT_TRANSITION}`,
       cursor: 'help',
