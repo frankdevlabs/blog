@@ -21,7 +21,7 @@ const gtmLoadScript = `
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://tags.franksblog.nl/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','${process.env.GTM_ID}');
+    })(window,document,'script','dataLayer','${process.env.GATSBY_GTM_ID}');
 `
 
 export const onRenderBody = ({setPreBodyComponents, setHeadComponents}) => {
@@ -39,7 +39,7 @@ export const onRenderBody = ({setPreBodyComponents, setHeadComponents}) => {
   })
   const gtmBodyScript =
     <noscript key="gtm-body">
-      <iframe src={`https://tags.franksblog.nl/ns.html?id=${process.env.GTM_ID}`}
+      <iframe src={`https://tags.franksblog.nl/ns.html?id=${process.env.GATSBY_GTM_ID}`}
               height="0"
               width="0"
               style={{display: 'none', visibility: 'hidden'}}
