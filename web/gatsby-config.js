@@ -67,7 +67,7 @@ module.exports = {
       options: {
         domains: [
           {domain: 'https://fonts.gstatic.com', crossOrigin: 'anonymous'},
-          {domain: 'https://tags.franksblog.nl', crossOrigin: 'anonymous'}
+          {domain: `${process.env.GATSBY_TAG_CONTAINER_URL}`, crossOrigin: 'anonymous'}
         ]
       }
     },
