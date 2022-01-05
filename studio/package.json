@@ -10,7 +10,7 @@
     "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
     "build": "sanity build",
     "graphql-deploy": "sanity graphql deploy --playground",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "test": "sanity check"
   },
   "dependencies": {
@@ -32,17 +32,5 @@
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-dashboard-widget-netlify": "^1.2.1",
     "styled-components": "^5.3.3"
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^7.12.1",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-config-standard-react": "^11.0.1",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-standard": "^4.1.0",
-    "prettier-eslint-cli": "^4.2.1"
   }
 }

@@ -1,17 +1,17 @@
-import {MdLaunch} from 'react-icons/md'
+import { MdLaunch } from 'react-icons/md'
 
 export default {
   name: 'link',
   type: 'object',
   title: 'External Link',
   blockEditor: {
-    icon: MdLaunch
+    icon: MdLaunch,
   },
   fields: [
     {
       title: 'URL',
       name: 'href',
-      type: 'url'
-    }
-  ]
+      type: 'url',
+    },
+  ],
 }

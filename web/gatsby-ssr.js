@@ -1,5 +1,5 @@
-import React, {createElement} from 'react'
-import App from './src/components/app'
+import React, { createElement } from "react"; // eslint-disable-line no-unused-vars
+import App from "./src/components/app";
 
 const applyDarkModeClass = `
   (function () {
@@ -14,7 +14,7 @@ const applyDarkModeClass = `
       }
     } catch (e) {}
   })()
-`
+`;
 
 const gtmLoadScript = `
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -22,35 +22,36 @@ const gtmLoadScript = `
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       '${process.env.GATSBY_TAG_CONTAINER_URL}/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','${process.env.GATSBY_GTM_ID}');
-`
+`;
 
-export const onRenderBody = ({setPreBodyComponents, setHeadComponents}) => {
-  const darkmodeScript = createElement('script', {
-    key: 'darkmode',
+export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
+  const darkmodeScript = createElement("script", {
+    key: "darkmode",
     dangerouslySetInnerHTML: {
-      __html: applyDarkModeClass
-    }
-  })
-  const gtmHeadScript = createElement('script', {
-    key: 'gtm-head',
+      __html: applyDarkModeClass,
+    },
+  });
+  const gtmHeadScript = createElement("script", {
+    key: "gtm-head",
     dangerouslySetInnerHTML: {
-      __html: gtmLoadScript
-    }
-  })
-  const gtmBodyScript =
+      __html: gtmLoadScript,
+    },
+  });
+  const gtmBodyScript = (
     <noscript key="gtm-body">
-      <iframe src={`${process.env.GATSBY_TAG_CONTAINER_URL}/ns.html?id=${process.env.GATSBY_GTM_ID}`}
-              height="0"
-              width="0"
-              style={{display: 'none', visibility: 'hidden'}}
-      >
-      </iframe>
+      <iframe
+        src={`${process.env.GATSBY_TAG_CONTAINER_URL}/ns.html?id=${process.env.GATSBY_GTM_ID}`}
+        height="0"
+        width="0"
+        style={{ display: "none", visibility: "hidden" }}
+      ></iframe>
     </noscript>
+  );
 
-  setHeadComponents([gtmHeadScript])
-  setPreBodyComponents([darkmodeScript, gtmBodyScript])
-}
+  setHeadComponents([gtmHeadScript]);
+  setPreBodyComponents([darkmodeScript, gtmBodyScript]);
+};
 
-export const wrapPageElement = ({element}) => {
-  return <App>{element}</App>
-}
+export const wrapPageElement = ({ element }) => {
+  return <App>{element}</App>;
+};

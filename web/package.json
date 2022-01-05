@@ -8,22 +8,9 @@
     "build": "gatsby build",
     "clean-cache": "gatsby clean",
     "dev": "npm run clean-cache && gatsby develop -H 0.0.0.0",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "format": "prettier-eslint --write \"**/*.js\" \"!.cache/**\" \"!node_modules/**\" \"!public/**\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
-  },
-  "devDependencies": {
-    "@emotion/eslint-plugin": "^11.7.0",
-    "babel-plugin-prismjs": "^2.1.0",
-    "babel-preset-gatsby": "^2.4.0",
-    "eslint": "^7.12.1",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-config-standard-react": "^11.0.1",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "prettier-eslint-cli": "^5.0.1"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

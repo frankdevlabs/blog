@@ -3,16 +3,16 @@ const bp = {
   md: 768,
   lg: 992,
   xl: 1200,
-  xxl: 1600
-}
+  xxl: 1600,
+};
 
-export default n => {
-  const bpArray = Object.keys(bp).map(key => [key, bp[key]])
+export default (n) => {
+  const bpArray = Object.keys(bp).map((key) => [key, bp[key]]);
 
   const [result] = bpArray.reduce((acc, [name, size]) => {
-    if (n === name) return [...acc, `@media (max-width: ${size}px)`]
-    return acc
-  }, [])
+    if (n === name) return [...acc, `@media (max-width: ${size}px)`];
+    return acc;
+  }, []);
 
-  return result
-}
+  return result;
+};

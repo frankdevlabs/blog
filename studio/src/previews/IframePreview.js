@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp, react/no-did-mount-set-state */
-import React from 'react'
+import React from 'react' // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types'
 import { format } from 'date-fns'
 import styles from './IframePreview.module.css'
@@ -21,7 +21,7 @@ const assemblePostUrl = ({ displayed, options }) => {
   return `${previewURL}/blog${path}`
 }
 
-const IframePreview = props => {
+const IframePreview = (props) => {
   const { options } = props
   const { displayed } = props.document
 
@@ -53,11 +53,11 @@ const IframePreview = props => {
 }
 
 IframePreview.propTypes = {
-  document: PropTypes.object // eslint-disable-line react/forbid-prop-types
+  document: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 }
 
 IframePreview.defaultProps = {
-  document: null
+  document: null,
 }
 
 export default IframePreview

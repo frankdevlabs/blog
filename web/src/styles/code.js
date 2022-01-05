@@ -141,7 +141,7 @@ export const LIGHT_CODE_THEME = `
   .token.entity {
   cursor: help;
   }
-`
+`;
 
 /* PrismJS 1.23.0
 https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript */
@@ -269,4 +269,4 @@ export const DARK_CODE_THEME = `
   .token.entity {
     cursor: help;
   }
-`
+`;

@@ -1,20 +1,17 @@
-import {MdLink} from 'react-icons/md'
+import { MdLink } from 'react-icons/md'
 
 export default {
   name: 'internalLink',
   type: 'object',
   title: 'Internal Link',
   blockEditor: {
-    icon: MdLink
+    icon: MdLink,
   },
   fields: [
     {
       name: 'reference',
       type: 'reference',
-      to: [
-        {type: 'post'},
-        {type: 'author'}
-      ]
-    }
-  ]
+      to: [{ type: 'post' }, { type: 'author' }],
+    },
+  ],
 }

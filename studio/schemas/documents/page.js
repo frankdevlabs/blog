@@ -7,7 +7,7 @@ export default {
       name: 'title',
       type: 'string',
       title: 'Title',
-      description: 'Titles should be catchy, descriptive, and not too long'
+      description: 'Titles should be catchy, descriptive, and not too long',
     },
     {
       name: 'slug',
@@ -16,32 +16,32 @@ export default {
       description: 'Some frontends will require a slug to be set to be able to show the page',
       options: {
         source: 'title',
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: 'mainImage',
       type: 'mainImage',
-      title: 'Main image'
+      title: 'Main image',
     },
     {
       name: 'excerpt',
       type: 'excerptPortableText',
       title: 'Excerpt',
       description:
-        'This ends up on summary pages, on Google, when people share your post in social media.'
+        'This ends up on summary pages, on Google, when people share your post in social media.',
     },
     {
       name: 'body',
       type: 'bodyPortableText',
-      title: 'Body'
-    }
+      title: 'Body',
+    },
   ],
   preview: {
     select: {
       title: 'title',
       slug: 'slug',
-      media: 'mainImage'
-    }
-  }
+      media: 'mainImage',
+    },
+  },
 }
