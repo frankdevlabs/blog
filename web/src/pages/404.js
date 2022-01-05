@@ -2,13 +2,13 @@ import React from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "gatsby";
 
 import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import ThemeProvider from "../theme/ThemeProvider";
 
 const NotFoundPage = () => (
   <ThemeProvider>
     <Layout>
-      <SEO title="404: Not found" />
+      <Seo title="404: Not found" />
       <section>
         <div className="container">
           <h1 css={{ paddingTop: "13vh" }} className="heading-1">

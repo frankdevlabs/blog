@@ -1,7 +1,7 @@
 import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../containers/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import { graphql, Link } from "gatsby";
 import PortableText from "../components/portable-text";
 import SocialShare from "../components/share";
@@ -33,7 +33,7 @@ const AboutPage = (props) => {
   const { borderColor } = getTheme(theme);
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Over mij"
         description="In mijn blog deel ik als jurist mijn fascinatie voor tech."
         type="website"

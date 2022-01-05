@@ -10,14 +10,20 @@ const Note = ({ mark, children }) => {
   const { theme } = useContext(ThemeContext);
   const { color } = getTheme(theme);
 
-  const toggleTouched = (e) => {
+  const toggleTouchedOnClick = (e) => {
     e.stopPropagation();
     return setTouched((prev) => !prev);
   };
+  const toggleTouchedOnKeydown = (e) => {
+    console.log(e.which);
+  };
   return (
     <span
+      role="textbox"
       className={`note ${touched ? "note--touched" : ""}`}
-      onClick={toggleTouched}
+      onClick={toggleTouchedOnClick}
+      onKeyDown={toggleTouchedOnKeydown}
+      tabIndex="0"
       css={{
         borderBottom: "1px dashed #D9BF65",
         transition: `border ${EASE_IN_OUT_TRANSITION}`,
@@ -114,7 +120,7 @@ const Note = ({ mark, children }) => {
                 color: "#09192B",
               },
             }}
-            onClick={toggleTouched}
+            onClick={toggleTouchedOnClick}
           >
             X
           </button>

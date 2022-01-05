@@ -1,13 +1,13 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { GatsbyImage } from "gatsby-plugin-image";
-import { getFluidGatsbyImage } from "gatsby-source-sanity";
+import { getGatsbyImageData } from "gatsby-source-sanity";
 import clientConfig from "../../client-config";
 
 const Figure = ({ node }) => {
   if (!node || !node.asset || !node.asset._id) {
     return null;
   }
-  const fluidProps = getFluidGatsbyImage(node.asset._id, { maxWidth: 675 }, clientConfig.sanity);
+  const fluidProps = getGatsbyImageData(node.asset._id, { maxWidth: 675 }, clientConfig.sanity);
   return (
     <figure
       css={{

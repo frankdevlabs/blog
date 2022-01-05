@@ -1,5 +1,5 @@
 import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import Layout from "../containers/layout";
 import { graphql, Link } from "gatsby";
 import PortableText from "../components/portable-text";
@@ -21,9 +21,7 @@ export const query = graphql`
       }
       mainImage {
         asset {
-          fixed(width: 1200) {
-            ...GatsbySanityImageFixed
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: DOMINANT_COLOR)
         }
       }
     }
@@ -35,7 +33,7 @@ const PrivacyPage = (props) => {
   const { borderColor } = getTheme(theme);
   return (
     <Layout>
-      <SEO
+      <Seo
         title={props.data.sanityPage.title}
         description={toPlainText(props.data.sanityPage._rawExcerpt)}
         type="website"

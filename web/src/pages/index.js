@@ -6,7 +6,7 @@ import {
   filterOutDocsPublishedInTheFuture,
 } from "../lib/helpers";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import Layout from "../containers/layout";
 import BlogPostPreviewList from "../components/blog-post-preview-list";
 import mq from "../lib/media";
@@ -31,9 +31,7 @@ export const query = graphql`
             caption
             alt
             asset {
-              fluid(maxWidth: 268) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: DOMINANT_COLOR)
             }
           }
           readingTimeInMinutes
@@ -74,7 +72,7 @@ const IndexPage = (props) => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={site.title}
         description={site.description}
         keywords={site.keywords}

@@ -1,4 +1,4 @@
-const { isFuture, format } = require("date-fns");
+const { isFuture, format, parseISO } = require("date-fns");
 
 module.exports.mapEdgesToNodes = function (data) {
   if (!data.edges) return [];
@@ -10,7 +10,7 @@ module.exports.filterOutDocsWithoutSlugs = function ({ slug }) {
 };
 
 module.exports.filterOutDocsPublishedInTheFuture = function ({ publishedAt }) {
-  return !isFuture(publishedAt);
+  return !isFuture(parseISO(publishedAt));
 };
 
 module.exports.toPlainText = function (blocks) {
@@ -28,5 +28,5 @@ module.exports.toPlainText = function (blocks) {
 };
 
 module.exports.getBlogUrl = function (publishedAt, slug) {
-  return `/blog/${format(publishedAt, "YYYY/MM")}/${slug.current || slug}/`;
+  return `/blog/${format(parseISO(publishedAt), "yyyy/MM")}/${slug.current || slug}/`;
 };

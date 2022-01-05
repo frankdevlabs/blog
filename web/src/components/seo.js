@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, keywords, title, image, type, path }) {
+function Seo({ description, lang, meta, keywords, title, image, type, path }) {
   const GOOGLE_FONTS_PATH =
     "https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700|Raleway:300,400,400i,700&display=swap";
   return (
@@ -13,7 +13,7 @@ function SEO({ description, lang, meta, keywords, title, image, type, path }) {
         const metaDescription = description || (data.site && data.site.description) || "";
         const siteTitle = (data.site && data.site.title) || "";
         const siteAuthor = (data.site && data.site.author && data.site.author.twitter) || "";
-        const metaImage = image && image.asset ? image.asset.fixed.src : "";
+        const metaImage = image && image.asset ? image.asset : "";
         const metaImageAlt = (image && image.alt) || "";
 
         return (
@@ -107,13 +107,13 @@ function SEO({ description, lang, meta, keywords, title, image, type, path }) {
   );
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   lang: "nl",
   meta: [],
   keywords: [],
 };
 
-SEO.propTypes = {
+Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
@@ -123,7 +123,7 @@ SEO.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default SEO;
+export default Seo;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {

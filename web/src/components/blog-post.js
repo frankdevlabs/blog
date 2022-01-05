@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"; // eslint-disable-line no-unused-vars
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import nl from "date-fns/locale/nl";
 import PortableText from "./portable-text";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -34,7 +34,7 @@ const BlogPost = (props) => {
         >
           <h1 className="heading-1">{props.title}</h1>
           <div className="caption" css={{ padding: "1rem 0" }}>
-            {`${format(props.publishedAt, "D MMMM YYYY", { locale: nl })}
+            {`${format(parseISO(props.publishedAt), "d MMMM yyyy", { locale: nl })}
             | ${props.readingTimeInMinutes}
             ${props.readingTimeInMinutes > 0 ? "minuten" : "minuut"} lezen
             |
@@ -56,7 +56,7 @@ const BlogPost = (props) => {
             }}
           >
             <GatsbyImage
-              image={props.mainImage.childImageSharp.gatsbyImageData}
+              image={props.mainImage.asset.gatsbyImageData}
               css={{
                 height: "100%",
                 borderRadius: "4px",

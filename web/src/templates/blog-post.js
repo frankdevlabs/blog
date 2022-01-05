@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { getBlogUrl, toPlainText } from "../lib/helpers";
 import GraphQLErrorList from "../components/graphql-error-list";
 import BlogPost from "../components/blog-post";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
@@ -29,12 +29,7 @@ export const query = graphql`
       _rawIntro(resolveReferences: { maxDepth: 5 })
       mainImage {
         asset {
-          fluid(maxWidth: 1160) {
-            ...GatsbySanityImageFluid
-          }
-          fixed(width: 1200) {
-            ...GatsbySanityImageFixed
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: DOMINANT_COLOR, width: 1200)
         }
       }
     }
@@ -46,9 +41,9 @@ const BlogPostTemplate = (props) => {
   const post = data && data.post;
   return (
     <Layout>
-      {errors && <SEO title="GraphQL Error" />}
+      {errors && <Seo title="GraphQL Error" />}
       {post && (
-        <SEO
+        <Seo
           title={post.title || "Untitled"}
           description={toPlainText(post._rawExcerpt)}
           image={post.mainImage}

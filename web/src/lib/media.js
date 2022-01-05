@@ -6,7 +6,7 @@ const bp = {
   xxl: 1600,
 };
 
-export default (n) => {
+const mq = (n) => {
   const bpArray = Object.keys(bp).map((key) => [key, bp[key]]);
 
   const [result] = bpArray.reduce((acc, [name, size]) => {
@@ -16,3 +16,5 @@ export default (n) => {
 
   return result;
 };
+
+export default mq;
