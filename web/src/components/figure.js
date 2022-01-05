@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import {getFluidGatsbyImage} from 'gatsby-source-sanity'
 import clientConfig from '../../client-config'
 
@@ -14,7 +14,7 @@ export default ({node}) => {
     <figure css={{
       margin: '3.7rem 0'
     }}>
-      <Img fluid={fluidProps} alt={node.alt} />
+      <GatsbyImage image={fluidProps} alt={node.alt} />
       <figcaption
         css={{
           fontSize: '1.4rem',
@@ -26,5 +26,5 @@ export default ({node}) => {
         }}
       >{node.caption}</figcaption>
     </figure>
-  )
+  );
 }
