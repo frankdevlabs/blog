@@ -15,6 +15,11 @@ const Note = ({ mark, children }) => {
     return setTouched((prev) => !prev);
   };
   const toggleTouchedOnKeydown = (e) => {
+    /* TO-DO: Implement textbox properly
+      jsx-a11y/click-events-have-key-events,
+      jsx-a11y/no-static-element-interactions,
+      jsx-a11y/no-noninteractive-tabindex
+    */
     console.log(e.which);
   };
   return (
