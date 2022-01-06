@@ -1,79 +1,97 @@
 import { useState } from "react";
 
-export default function useCookie(key, defaultValue) {
-  // if (typeof document !== "undefined") {
-  // : [T, (value: T, options?: CookieOptions) => void, () => void] {
-  const [value, setValue] = useState(() => {
-    const match = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
-    let value = match ? match[2] : defaultValue;
+const isBrowser = typeof window !== "undefined";
 
-    try {
-      value = JSON.parse(value);
-    } catch (_) {}
+const setCookie = (name, value, options) => {
+  if (!isBrowser) return;
 
-    return value;
+  if (Array.isArray(value) || Object.prototype.toString.call(value) === "[object Object]") {
+    value = JSON.stringify(value);
+  }
+
+  let cookie = `${name}=${value}`;
+
+  const optionsWithDefaults = {
+    expires: 0,
+    domain: process.env.GATSBY_COOKIE_DOMAIN,
+    path: "/",
+    secure: true,
+    httpOnly: false,
+    maxAge: 15552000,
+    sameSite: "strict",
+    ...options,
+  };
+
+  if (optionsWithDefaults.expires) {
+    const date = new Date();
+    date.setTime(date.getTime() + 1000 * optionsWithDefaults.expires);
+    cookie += `; Expires=${date.toUTCString()}`;
+  }
+
+  if (optionsWithDefaults.path) {
+    cookie += `; Path=${optionsWithDefaults.path}`;
+  }
+
+  if (optionsWithDefaults.domain) {
+    cookie += `; Domain=${optionsWithDefaults.domain}`;
+  }
+
+  if (optionsWithDefaults.maxAge) {
+    cookie += `; Max-Age=${optionsWithDefaults.maxAge}`;
+  }
+
+  if (optionsWithDefaults.sameSite) {
+    cookie += `; SameSite=${optionsWithDefaults.sameSite}`;
+  }
+
+  if (optionsWithDefaults.secure) {
+    cookie += "; Secure";
+  }
+
+  if (optionsWithDefaults.httpOnly) {
+    cookie += "; HttpOnly";
+  }
+
+  document.cookie = cookie;
+};
+
+const getCookie = (name, initialValue = "") => {
+  const cookies = isBrowser ? document.cookie.split("; ") : [""];
+
+  /*
+      This statement returns the value of a cookie in case there's a cookie with the 'name'.
+            OR
+      If no cookie has been saved as of yet, it will return the default initialValue.
+  */
+  return cookies[0] !== ""
+    ? cookies.reduce((r, v) => {
+        const parts = v.split("=");
+
+        let value = parts[0] === name ? decodeURIComponent(parts[1]) : r;
+        // The below if statement ensures Array and/or Objects are returned accordingly (instead of String).
+        if (Array.isArray(value) || Object.prototype.toString.call(value) === "[object Object]")
+          value = JSON.stringify(value);
+        // The below if statement ensures Numbers are returned as 'Number' type (instead of String).
+        if (typeof value === "string")
+          value = !isNaN(parseInt(value)) ? parseInt(value) : initialValue;
+        /* The below if statement allows the return of 0 in case 'let value = 0', which is a falsy value.
+        This is required for the functioning of our cookiebanner (cookie-notice and layout components). */
+        if (value === undefined) return initialValue;
+
+        return value;
+      }, "")
+    : initialValue;
+};
+
+export default function useCookie(name, initialValue) {
+  const [item, setItem] = useState(() => {
+    return getCookie(name, initialValue);
   });
 
-  const setCookie = (value) => {
-    const cookieOptions = {
-      expires: 0,
-      domain: process.env.GATSBY_COOKIE_DOMAIN,
-      path: "/",
-      secure: true,
-      httpOnly: false,
-      maxAge: 15552000,
-      sameSite: "strict",
-    };
-
-    setValue(value);
-
-    // if value is an array or a plain object, convert to JSON
-    if (Array.isArray(value) || Object.prototype.toString.call(value) === "[object Object]") {
-      value = JSON.stringify(value);
-    }
-
-    let cookie = `${key}=${value}`;
-
-    if (cookieOptions.expires) {
-      const date = new Date();
-      date.setTime(date.getTime() + 1000 * cookieOptions.expires);
-      cookie += `; Expires=${date.toUTCString()}`;
-    }
-
-    if (cookieOptions.path) {
-      cookie += `; Path=${cookieOptions.path}`;
-    }
-
-    if (cookieOptions.domain) {
-      cookie += `; Domain=${cookieOptions.domain}`;
-    }
-
-    if (cookieOptions.maxAge) {
-      cookie += `; Max-Age=${cookieOptions.maxAge}`;
-    }
-
-    if (cookieOptions.sameSite) {
-      cookie += `; SameSite=${cookieOptions.sameSite}`;
-    }
-
-    if (cookieOptions.secure) {
-      cookie += "; Secure";
-    }
-
-    if (cookieOptions.httpOnly) {
-      cookie += "; HttpOnly";
-    }
-
-    document.cookie = cookie;
+  const updateItem = (value, options) => {
+    setItem(value);
+    setCookie(name, value, options);
   };
 
-  const clearCookie = () => {
-    setCookie("", { expires: -3600 });
-    setValue(defaultValue);
-  };
-
-  return [value, setCookie, clearCookie];
-  // }
-  // const [value, setValue] = useState(0);
-  // return [value, setValue];
+  return [item, updateItem];
 }
