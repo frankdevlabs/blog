@@ -30,10 +30,10 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'https://github.com/Passadoh/blog',
+            value: 'https://github.com/frankdevlabs/blog',
             category: 'Code',
           },
-          { title: 'Frontend', value: 'https://blog-web-nve75wuq.netlify.app', category: 'apps' },
+          { title: 'Frontend', value: 'https://franksblog.nl', category: 'apps' },
         ],
       },
     },
