@@ -13,7 +13,8 @@ function Seo({ description, lang, meta, keywords, title, image, type, path }) {
         const metaDescription = description || (data.site && data.site.description) || "";
         const siteTitle = (data.site && data.site.title) || "";
         const siteAuthor = (data.site && data.site.author && data.site.author.twitter) || "";
-        const metaImage = image && image.asset ? image.asset : "";
+        const metaImage =
+          image && image.asset ? image.asset.gatsbyImageData.images.fallback.src : "";
         const metaImageAlt = (image && image.alt) || "";
 
         return (
