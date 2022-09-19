@@ -31,7 +31,7 @@ export const query = graphql`
             caption
             alt
             asset {
-              gatsbyImageData(width: 467, placeholder: DOMINANT_COLOR)
+              _id
             }
           }
           readingTimeInMinutes

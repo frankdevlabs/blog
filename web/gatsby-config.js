@@ -28,6 +28,10 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-sanity-image",
+      options: { ...clientConfig.sanity },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "img",

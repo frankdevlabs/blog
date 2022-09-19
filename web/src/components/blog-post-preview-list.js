@@ -2,7 +2,7 @@ import React from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "gatsby";
 import { format, parseISO } from "date-fns";
 import nl from "date-fns/locale/nl";
-import { GatsbyImage } from "gatsby-plugin-image";
+import SanityImage from "gatsby-plugin-sanity-image";
 import PortableText from "./portable-text";
 import { getBlogUrl } from "../lib/helpers";
 
@@ -46,13 +46,16 @@ const BlogPostPreviewList = (props) => {
                       zIndex: "1",
                     }}
                   />
-                  <GatsbyImage
-                    image={node.mainImage.asset.gatsbyImageData}
-                    css={{
+                  <SanityImage
+                    {...node.mainImage}
+                    width={467}
+                    sizes={`(min-width: 500px) 50vw, (min-width: 768px) 25vw, (min-width: 992px) 33,3vw, 100vw`}
+                    style={{
+                      width: "100%",
                       height: "100%",
+                      objectFit: "cover",
                       borderRadius: "4px",
                     }}
-                    alt={node.mainImage.alt}
                   />
                 </div>
                 <h3 className="heading-3" css={{ marginTop: "6px" }}>
