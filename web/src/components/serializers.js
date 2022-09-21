@@ -28,6 +28,10 @@ const BlockRenderer = (props) => {
     );
   }
 
+  if (style === "normal") {
+    return <span className="normal-style">{props.children}</span>;
+  }
+
   // Fall back to default handling
   return BlockContent.defaultSerializers.types.block(props);
 };
@@ -40,7 +44,11 @@ const serializers = {
     // eslint-disable-next-line react/display-name
     codesnippet: (props) => (
       <div className="code-container">
-        <pre className={`language-${props.node.language}`} data-language={props.node.language}>
+        <pre
+          className={`language-${props.node.language}`}
+          data-language={props.node.language}
+          tabIndex="-1"
+        >
           <code className={`language-${props.node.language}`}>{props.node.code}</code>
         </pre>
       </div>

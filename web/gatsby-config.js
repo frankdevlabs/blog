@@ -15,6 +15,9 @@ module.exports = {
     description: "Hier schrijf ik over legal en tech.",
     siteUrl: process.env.GATSBY_HOME_PAGE + "/",
   },
+  flags: {
+    DEV_SSR: process.env.DEV_SSR || false,
+  },
   plugins: [
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",

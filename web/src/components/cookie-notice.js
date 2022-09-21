@@ -3,20 +3,25 @@ import { Link } from "gatsby";
 import CookieIcon from "./icons/cookie.svg";
 import Button from "./button";
 import mq from "../lib/media";
+import useCookie from "../lib/useCookie";
 import ThemeContext from "../theme/ThemeContext";
 import { getTheme } from "../theme/theme";
 
-const CookieNotice = ({ set }) => {
+const CookieNotice = () => {
+  const [showNotice, setShowNotice] = useCookie("showNotice", 1);
   const { theme } = useContext(ThemeContext);
   const { modalBackground } = getTheme(theme);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
+    if (!showNotice) return setActive(showNotice);
+
     const timer = setTimeout(() => {
-      setActive(true);
+      setActive(showNotice);
     }, 2000);
     return () => clearTimeout(timer);
-  });
+  }, [showNotice]);
+
   return (
     <div
       css={{
@@ -29,7 +34,7 @@ const CookieNotice = ({ set }) => {
         padding: "3.9rem 4.1rem",
         opacity: `${active ? "1" : "0"}`,
         transition: "all .5s ease-in-out",
-        zIndex: "100",
+        zIndex: `${active ? "100" : "-5"}`,
         right: `${active ? "7%" : "-46rem"}`,
         bottom: "7%",
         [mq("md")]: {
@@ -74,7 +79,7 @@ const CookieNotice = ({ set }) => {
           paddingTop: "3.5rem",
         }}
       >
-        <Button onClick={() => set(0)}>Sluiten</Button>
+        <Button onClick={() => setShowNotice(0)}>Sluiten</Button>
       </div>
     </div>
   );

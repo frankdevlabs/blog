@@ -40,6 +40,7 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
   const gtmBodyScript = (
     <noscript key="gtm-body">
       <iframe
+        title="gtm-body-iframe"
         src={`${process.env.GATSBY_TAG_CONTAINER_URL}/ns.html?id=${process.env.GATSBY_GTM_ID}`}
         height="0"
         width="0"
@@ -52,6 +53,6 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
   setPreBodyComponents([darkmodeScript, gtmBodyScript]);
 };
 
-export const wrapPageElement = ({ element }) => {
+export const wrapRootElement = ({ element }) => {
   return <App>{element}</App>;
 };

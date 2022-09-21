@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-const isBrowser = typeof window !== "undefined";
-
 const setCookie = (name, value, options) => {
-  if (!isBrowser) return;
-
   if (Array.isArray(value) || Object.prototype.toString.call(value) === "[object Object]") {
     value = JSON.stringify(value);
   }
@@ -56,12 +52,12 @@ const setCookie = (name, value, options) => {
 };
 
 const getCookie = (name, initialValue = "") => {
-  const cookies = isBrowser ? document.cookie.split("; ") : [""];
+  const cookies = document.cookie.split("; ");
 
   /*
       This statement returns the value of a cookie in case there's a cookie with the 'name'.
             OR
-      If no cookie has been saved as of yet, it will return the default initialValue.
+      If no cookie has been saved yet, it will return the default initialValue.
   */
   return cookies[0] !== ""
     ? cookies.reduce((r, v) => {
@@ -85,7 +81,13 @@ const getCookie = (name, initialValue = "") => {
 
 export default function useCookie(name, initialValue) {
   const [item, setItem] = useState(() => {
-    return getCookie(name, initialValue);
+    let cookie = initialValue;
+
+    if (typeof window === "object") {
+      cookie = getCookie(name, initialValue);
+    }
+
+    return cookie;
   });
 
   const updateItem = (value, options) => {
