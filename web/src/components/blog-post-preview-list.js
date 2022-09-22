@@ -48,8 +48,8 @@ const BlogPostPreviewList = (props) => {
                   />
                   <SanityImage
                     {...node.mainImage}
-                    width={467}
-                    sizes={`(min-width: 500px) 50vw, (min-width: 768px) 25vw, (min-width: 992px) 33,3vw, 100vw`}
+                    width={300}
+                    sizes="(min-width: 500px) 50vw, (min-width: 768px) 33.3vw, (min-width: 992px) 25vw, (min-width: 1280px) 267.5px, 100vw"
                     style={{
                       width: "100%",
                       height: "100%",

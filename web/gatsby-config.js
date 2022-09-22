@@ -72,10 +72,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-preconnect",
       options: {
-        domains: [
-          { domain: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-          { domain: `${process.env.GATSBY_TAG_CONTAINER_URL}`, crossOrigin: "anonymous" },
-        ],
+        domains: [{ domain: `${process.env.GATSBY_TAG_CONTAINER_URL}`, crossOrigin: "anonymous" }],
       },
     },
     {

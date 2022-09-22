@@ -4,8 +4,7 @@ import { Helmet } from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 
 function Seo({ description, lang, meta, keywords, title, image, type, path }) {
-  const GOOGLE_FONTS_PATH =
-    "https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700|Raleway:300,400,400i,700&display=swap";
+  const FONTS_PATH = "/fonts.css";
   return (
     <StaticQuery
       query={detailsQuery}
@@ -29,7 +28,7 @@ function Seo({ description, lang, meta, keywords, title, image, type, path }) {
               { rel: "canonical", href: process.env.GATSBY_HOME_PAGE + path },
               {
                 rel: "preload",
-                href: GOOGLE_FONTS_PATH,
+                href: FONTS_PATH,
                 as: "style",
                 onLoad: "this.onload=null;this.rel='stylesheet'",
               },
@@ -98,9 +97,7 @@ function Seo({ description, lang, meta, keywords, title, image, type, path }) {
               )
               .concat(meta)}
           >
-            <noscript>
-              {`<link href=${GOOGLE_FONTS_PATH} rel='stylesheet' type='text/css' />`}
-            </noscript>
+            <noscript>{`<link href=${FONTS_PATH} rel='stylesheet' type='text/css' />`}</noscript>
           </Helmet>
         );
       }}
