@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"; // eslint-disable-line no-unused-vars
-import { node } from "prop-types";
 import { Global, css, ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
 import ThemeContext from "./ThemeContext";
 import { useTheme, getTheme, CUBIC_BEZIER_TRANSITION, BACKGROUND_TRANSITION_TIME } from "./theme";
 import { LIGHT_CODE_THEME, DARK_CODE_THEME } from "../styles/code";
+import { FONTS } from "../styles/fonts";
 
 import mq from "../lib/media";
 
@@ -268,6 +268,7 @@ const ThemeProvider = ({ children }) => {
         />
         <Global styles={css(theme === "dark" ? DARK_CODE_THEME : LIGHT_CODE_THEME)} />
         <Global styles={css(`body.dark {${DARK_CODE_THEME}}`)} />
+        <Global styles={css(FONTS)} />
         <div
           className="theme-wrapper"
           css={{
@@ -284,10 +285,6 @@ const ThemeProvider = ({ children }) => {
       </EmotionThemeProvider>
     </ThemeContext.Provider>
   );
-};
-
-ThemeProvider.propTypes = {
-  children: node.isRequired,
 };
 
 export default ThemeProvider;

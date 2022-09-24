@@ -57,28 +57,14 @@ const IndexPage = (props) => {
     );
   }
 
-  const site = (data || {}).site;
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
 
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    );
-  }
-
   return (
     <Layout>
-      <Seo
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
-        type="website"
-        path="/"
-      />
       <section
         className="hero-section"
         css={{
@@ -113,6 +99,35 @@ const IndexPage = (props) => {
         </div>
       </section>
     </Layout>
+  );
+};
+
+export const Head = (props) => {
+  const { data, errors } = props;
+
+  if (errors) {
+    return (
+      <Layout>
+        <GraphQLErrorList errors={errors} />
+      </Layout>
+    );
+  }
+
+  const site = (data || {}).site;
+
+  if (!site) {
+    throw new Error(
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
+    );
+  }
+  return (
+    <Seo
+      title={site.title}
+      description={site.description}
+      keywords={site.keywords}
+      contentType="website"
+      path="/"
+    />
   );
 };
 

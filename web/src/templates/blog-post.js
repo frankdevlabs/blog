@@ -41,17 +41,6 @@ const BlogPostTemplate = (props) => {
   const post = data && data.post;
   return (
     <Layout>
-      {errors && <Seo title="GraphQL Error" />}
-      {post && (
-        <Seo
-          title={post.title || "Untitled"}
-          description={toPlainText(post._rawExcerpt)}
-          image={post.mainImage}
-          type="article"
-          path={getBlogUrl(post.publishedAt, post.slug.current)}
-        />
-      )}
-
       {errors && (
         <div>
           <GraphQLErrorList errors={errors} />
@@ -59,6 +48,28 @@ const BlogPostTemplate = (props) => {
       )}
       {post && <BlogPost {...post} />}
     </Layout>
+  );
+};
+
+export const Head = (props) => {
+  const { data, errors } = props;
+  const post = data && data.post;
+  return (
+    <>
+      {errors && <Seo title="GraphQL Error" />}
+      {post && (
+        <Seo
+          title={post.title || "Untitled"}
+          description={toPlainText(post._rawExcerpt)}
+          image={{
+            url: post.mainImage.asset?.gatsbyImageData?.images?.fallback?.src,
+            alt: post.mainImage.alt,
+          }}
+          type="article"
+          path={getBlogUrl(post.publishedAt, post.slug.current)}
+        />
+      )}
+    </>
   );
 };
 

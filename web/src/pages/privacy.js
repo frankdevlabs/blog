@@ -33,13 +33,6 @@ const PrivacyPage = (props) => {
   const { borderColor } = getTheme(theme);
   return (
     <Layout>
-      <Seo
-        title={props.data.sanityPage.title}
-        description={toPlainText(props.data.sanityPage._rawExcerpt)}
-        type="website"
-        path={"/" + props.data.sanityPage.slug.current + "/"}
-        image={props.data.sanityPage.mainImage}
-      />
       <section className="privacy-section">
         <div
           className="container"
@@ -89,5 +82,15 @@ const PrivacyPage = (props) => {
     </Layout>
   );
 };
+
+export const Head = (props) => (
+  <Seo
+    title={props.data.sanityPage.title}
+    description={toPlainText(props.data.sanityPage._rawExcerpt)}
+    type="website"
+    path={"/" + props.data.sanityPage.slug.current + "/"}
+    image={props.data.sanityPage.mainImage}
+  />
+);
 
 export default PrivacyPage;

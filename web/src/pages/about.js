@@ -33,12 +33,6 @@ const AboutPage = (props) => {
   const { borderColor } = getTheme(theme);
   return (
     <Layout>
-      <Seo
-        title="Over mij"
-        description="In mijn blog deel ik als jurist mijn fascinatie voor tech."
-        type="website"
-        path="/about/"
-      />
       <section className="about-section">
         <div
           className="container"
@@ -125,5 +119,14 @@ const AboutPage = (props) => {
     </Layout>
   );
 };
+
+export const Head = () => (
+  <Seo
+    title="Over mij"
+    description="In mijn blog deel ik als jurist mijn fascinatie voor tech."
+    type="website"
+    path="/about/"
+  />
+);
 
 export default AboutPage;

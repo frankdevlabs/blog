@@ -8,7 +8,6 @@ import ThemeProvider from "../theme/ThemeProvider";
 const NotFoundPage = () => (
   <ThemeProvider>
     <Layout>
-      <Seo title="404: Not found" />
       <section>
         <div className="container">
           <h1 css={{ paddingTop: "13vh" }} className="heading-1">
@@ -25,5 +24,7 @@ const NotFoundPage = () => (
     </Layout>
   </ThemeProvider>
 );
+
+export const Head = () => <Seo title="404: Not found" />;
 
 export default NotFoundPage;

@@ -24,7 +24,7 @@ const gtmLoadScript = `
     })(window,document,'script','dataLayer','${process.env.GATSBY_GTM_ID}');
 `;
 
-export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
+export const onRenderBody = ({ setPreBodyComponents, setHeadComponents, setHtmlAttributes }) => {
   const darkmodeScript = createElement("script", {
     key: "darkmode",
     dangerouslySetInnerHTML: {
@@ -51,6 +51,7 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
 
   setHeadComponents([gtmHeadScript]);
   setPreBodyComponents([darkmodeScript, gtmBodyScript]);
+  setHtmlAttributes({ prefix: "og: http://ogp.me/ns#", lang: "nl" });
 };
 
 export const wrapRootElement = ({ element }) => {
