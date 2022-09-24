@@ -142,6 +142,17 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-robots-txt",
-    "gatsby-plugin-netlify",
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/fonts/*": [
+            "Cache-Control: public",
+            "Cache-Control: max-age=365000000",
+            "Cache-Control: immutable",
+          ],
+        },
+      },
+    },
   ],
 };
