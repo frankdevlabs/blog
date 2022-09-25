@@ -192,7 +192,10 @@ const ThemeProvider = ({ children }) => {
             ".paragraph": {
               lineHeight: "3.2rem",
             },
-            ".paragraph > div > p:not(:last-child)": {
+            ".paragraph > div > span": {
+              display: "block",
+            },
+            ".paragraph > div > span:not(:last-child)": {
               marginBottom: "3.4rem",
             },
             ".paragraph > div > h1:not(:last-child)": {
