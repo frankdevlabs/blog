@@ -77,6 +77,9 @@ const Note = ({ mark, children }) => {
       <span
         className="note__text"
         css={{
+          "@media print": {
+            display: "none !important",
+          },
           color: color,
           position: "absolute",
           left: "700px",
