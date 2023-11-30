@@ -22,7 +22,7 @@ const FILE_NAME = process.env.GATSBY_TAG_CONTAINER_FILE_NAME
 
 const gtmLoadScript = `
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'${FILE_NAME}'});var f=d.getElementsByTagName(s)[0],
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       '${process.env.GATSBY_TAG_CONTAINER_URL}/${FILE_NAME}?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','${process.env.GATSBY_GTM_ID}');
