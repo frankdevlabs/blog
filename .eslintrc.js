@@ -19,6 +19,7 @@ module.exports = {
   },
   rules: {
     "react/prop-types": "off",
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
   },
   extends: [
     "eslint:recommended",

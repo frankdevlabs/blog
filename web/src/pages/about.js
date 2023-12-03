@@ -14,7 +14,7 @@ export const query = graphql`
   query AboutPageQuery {
     image: file(relativePath: { eq: "ik.png" }) {
       childImageSharp {
-        gatsbyImageData(width: 107, placeholder: TRACED_SVG, layout: CONSTRAINED)
+        gatsbyImageData(width: 107, placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
       }
     }
     bio: sanityAuthor(name: { eq: "Frank de Vries" }) {

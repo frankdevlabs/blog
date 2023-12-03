@@ -1,4 +1,6 @@
-export default {
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
   name: 'mainImage',
   type: 'image',
   title: 'Image',
@@ -6,24 +8,18 @@ export default {
     hotspot: true,
   },
   fields: [
-    {
+    defineField({
       name: 'caption',
       type: 'string',
       title: 'Caption',
-      options: {
-        isHighlighted: true,
-      },
-    },
-    {
+    }),
+    defineField({
       name: 'alt',
       type: 'string',
       title: 'Alternative text',
       description: 'Important for SEO and accessiblity.',
       validation: (Rule) => Rule.error('You have to fill out the alternative text.').required(),
-      options: {
-        isHighlighted: true,
-      },
-    },
+    }),
   ],
   preview: {
     select: {
@@ -31,4 +27,4 @@ export default {
       title: 'caption',
     },
   },
-}
+})

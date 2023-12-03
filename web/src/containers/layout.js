@@ -1,5 +1,5 @@
 import React, { useState } from "react"; // eslint-disable-line no-unused-vars
-import { graphql, StaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
 
 const query = graphql`
@@ -18,25 +18,20 @@ function LayoutContainer(props) {
   function handleHideNav() {
     setShowNav(false);
   }
+
+  const data = useStaticQuery(query);
+  if (!data.site) {
+    throw new Error(
+      'Missing "Site settings". Open the Studio at http://localhost:3333 and some content in "Site settings"',
+    );
+  }
   return (
-    <StaticQuery
-      query={query}
-      render={(data) => {
-        if (!data.site) {
-          throw new Error(
-            'Missing "Site settings". Open the Studio at http://localhost:3333 and some content in "Site settings"'
-          );
-        }
-        return (
-          <Layout
-            {...props}
-            showNav={showNav}
-            siteTitle={data.site.title}
-            onHideNav={handleHideNav}
-            onShowNav={handleShowNav}
-          />
-        );
-      }}
+    <Layout
+      {...props}
+      showNav={showNav}
+      siteTitle={data.site.title}
+      onHideNav={handleHideNav}
+      onShowNav={handleShowNav}
     />
   );
 }

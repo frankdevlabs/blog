@@ -1,6 +1,7 @@
+import { defineField, defineType } from 'sanity'
 import { MdLaunch } from 'react-icons/md'
 
-export default {
+export default defineType({
   name: 'link',
   type: 'object',
   title: 'External Link',
@@ -8,10 +9,10 @@ export default {
     icon: MdLaunch,
   },
   fields: [
-    {
+    defineField({
       title: 'URL',
       name: 'href',
       type: 'url',
-    },
+    }),
   ],
-}
+})

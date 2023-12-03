@@ -11,39 +11,37 @@ import Layout from "../containers/layout";
 import BlogPostPreviewList from "../components/blog-post-preview-list";
 import mq from "../lib/media";
 
-export const query = graphql`
-  query IndexPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
-    posts: allSanityPost(
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          publishedAt
-          mainImage {
-            caption
-            alt
-            asset {
-              _id
-            }
+export const query = graphql`query IndexPageQuery {
+  site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
+    title
+    description
+    keywords
+  }
+  posts: allSanityPost(
+    sort: {publishedAt: DESC}
+    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+  ) {
+    edges {
+      node {
+        id
+        publishedAt
+        mainImage {
+          caption
+          alt
+          asset {
+            _id
           }
-          readingTimeInMinutes
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
+        }
+        readingTimeInMinutes
+        title
+        _rawExcerpt
+        slug {
+          current
         }
       }
     }
   }
-`;
+}`;
 
 const IndexPage = (props) => {
   const { data, errors } = props;
