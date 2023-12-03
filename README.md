@@ -9,14 +9,15 @@ To get started with Frank's Blog:
 1. **Clone this repository**: Obtain a local copy of the project.
 2. **Install Dependencies**: Run `npm install` in the project's root folder.
 3. **Start the Application**:
-- Run `npm run dev` to start both the studio and frontend locally.
-- The studio will be available at `http://localhost:3333`.
-- The frontend will be accessible at `http://localhost:8000`.
+  - Run `npm run dev` to start both the studio and frontend locally.
+  - The studio will be available at `http://localhost:3333`.
+  - The frontend will be accessible at `http://localhost:8000`.
 4. **Local Production Build**: Use `npm run build` for a local production build.
 
 ## Real-time Content Preview in Development
 
 To enable this feature:
+
 1. Create a token with read rights at your project’s API settings on manage.sanity.io.
 2. Rename `.env.development.template` to `.env.development` and include your token as `SANITY_READ_TOKEN="yourTokenHere"`.
 3. Restart the development server using `ctrl + C` and `npm run dev`.
