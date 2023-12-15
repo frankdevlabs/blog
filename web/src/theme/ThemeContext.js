@@ -46,9 +46,9 @@ export const ThemeProvider = ({ element }) => {
   }, [colorMode, rawSetColorMode]);
 
   return (
-    <CacheProvider value={myCache}>
-      <ThemeContext.Provider value={contextValue}>{element}</ThemeContext.Provider>
-    </CacheProvider>
+    <ThemeContext.Provider value={contextValue}>
+      <CacheProvider value={myCache}>{element}</CacheProvider>
+    </ThemeContext.Provider>
   );
 };
 
