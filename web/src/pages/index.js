@@ -8,7 +8,6 @@ import {
 import GraphQLErrorList from "../components/graphql-error-list";
 import Seo from "../components/seo";
 import BlogPostPreviewList from "../components/blog-post-preview-list";
-import mq from "../theme/media-queries";
 
 export const query = graphql`
   query IndexPageQuery {
@@ -67,7 +66,10 @@ const IndexPage = (props) => {
         className="hero-section"
         css={{
           paddingBottom: "12vh",
-          [mq("sm")]: {
+          // Using the mq function will cause a hydration mismatch error, because
+          // the function is not available on the server. The solution is to
+          // use the media query directly, like this:
+          "@media (max-width: 500px)": {
             paddingBottom: "5vh",
           },
         }}
@@ -76,7 +78,8 @@ const IndexPage = (props) => {
           className="container"
           css={{
             paddingTop: "10vh",
-            [mq("sm")]: {
+            // Same here, use the media query directly:
+            "@media (max-width: 500px)": {
               paddingTop: "5vh",
             },
           }}
