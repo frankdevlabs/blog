@@ -1,6 +1,7 @@
+import { defineField, defineType } from 'sanity'
 import { MdLink } from 'react-icons/md'
 
-export default {
+export default defineType({
   name: 'internalLink',
   type: 'object',
   title: 'Internal Link',
@@ -8,10 +9,10 @@ export default {
     icon: MdLink,
   },
   fields: [
-    {
+    defineField({
       name: 'reference',
       type: 'reference',
       to: [{ type: 'post' }, { type: 'author' }],
-    },
+    }),
   ],
-}
+})

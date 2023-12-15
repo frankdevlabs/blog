@@ -4,26 +4,23 @@ import DarkIcon from "./icons/logo-dark.svg";
 import { Link } from "gatsby";
 import DarkModeIcon from "./icons/dark-mode.svg";
 import LightModeIcon from "./icons/light-mode.svg";
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
-import mq from "../lib/media";
+import { ThemeContext } from "../theme/ThemeContext";
+import mq from "../theme/media-queries";
 
 const Header = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const { color, secondary, outerPadding, outerPaddingXL, outerPaddingMD, outerPaddingSM } =
-    getTheme(theme);
+  const { colorMode, setColorMode } = useContext(ThemeContext);
   return (
     <header
       css={{
-        padding: `32px ${outerPadding} 0 ${outerPadding}`,
+        padding: `32px var(--padding-outer-default) 0 var(--padding-outer-default)`,
         [mq("lg")]: {
-          padding: `32px ${outerPaddingXL} 0 ${outerPaddingXL}`,
+          padding: `32px var(--padding-outer-xl) 0 var(--padding-outer-xl)`,
         },
         [mq("md")]: {
-          padding: `32px ${outerPaddingMD} 0 ${outerPaddingMD}`,
+          padding: `32px var(--padding-outer-md) 0 var(--padding-outer-md)`,
         },
         [mq("sm")]: {
-          padding: `32px ${outerPaddingSM} 0 ${outerPaddingSM}`,
+          padding: `32px var(--padding-outer-sm) 0 var(--padding-outer-sm)`,
         },
       }}
     >
@@ -42,7 +39,7 @@ const Header = () => {
             }}
           >
             <Link aria-label="home-button" to="/">
-              {theme === "light" ? <LightIcon /> : <DarkIcon />}
+              {colorMode === "light" ? <LightIcon /> : <DarkIcon />}
             </Link>
           </div>
           <div
@@ -61,7 +58,7 @@ const Header = () => {
                 lineHeight: "2.8rem",
                 letterSpacing: "0em",
                 textAlign: "left",
-                color: color,
+                color: "var(--color-primary)",
                 paddingTop: "11px",
                 marginRight: "30px",
                 [mq("sm")]: {
@@ -73,16 +70,18 @@ const Header = () => {
             </Link>
             <button
               aria-label="Light and dark mode switch"
-              onClick={() => toggleTheme(theme)}
+              onClick={(ev) => {
+                setColorMode(colorMode === "light" ? "dark" : "light");
+              }}
               css={{
                 "&:hover svg": {
-                  stroke: secondary,
+                  stroke: "var(--color-secondary)",
                 },
                 "&:hover svg circle": {
-                  stroke: `${secondary} !important`,
+                  stroke: `var(--color-secondary !important`,
                 },
                 "&:hover svg path": {
-                  fill: `${secondary} !important`,
+                  fill: `var(--color-secondary !important`,
                 },
                 [mq("sm")]: {
                   "svg.icon": {
@@ -92,7 +91,7 @@ const Header = () => {
                 },
               }}
             >
-              {theme === "light" ? (
+              {colorMode === "light" ? (
                 <LightModeIcon className="icon" />
               ) : (
                 <DarkModeIcon className="icon" />

@@ -1,13 +1,10 @@
-import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
+import React from "react"; // eslint-disable-line no-unused-vars
 import Seo from "../components/seo";
-import Layout from "../containers/layout";
 import { graphql, Link } from "gatsby";
 import PortableText from "../components/portable-text";
 import { toPlainText } from "../lib/helpers";
-import mq from "../lib/media";
+import mq from "../theme/media-queries";
 import ReadMore from "../components/read-more";
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
 
 export const query = graphql`
   query PrivacyPageQuery {
@@ -29,10 +26,8 @@ export const query = graphql`
 `;
 
 const PrivacyPage = (props) => {
-  const { theme } = useContext(ThemeContext);
-  const { borderColor } = getTheme(theme);
   return (
-    <Layout>
+    <>
       <section className="privacy-section">
         <div
           className="container"
@@ -62,7 +57,7 @@ const PrivacyPage = (props) => {
               marginLeft: "auto",
               marginRight: "auto",
               maxWidth: "688px",
-              borderBottom: `1px solid ${borderColor}`,
+              borderBottom: "1px solid var(--color-border)",
             }}
           >
             {props.data.sanityPage._rawExcerpt && (
@@ -79,7 +74,7 @@ const PrivacyPage = (props) => {
           </Link>
         </p>
       </ReadMore>
-    </Layout>
+    </>
   );
 };
 

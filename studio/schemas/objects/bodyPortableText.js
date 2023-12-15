@@ -1,9 +1,11 @@
-export default {
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
   name: 'bodyPortableText',
   type: 'array',
   title: 'BlogPost body',
   of: [
-    {
+    defineField({
       type: 'block',
       title: 'Block',
       // Styles let you set what your user can mark up blocks with. These
@@ -35,16 +37,16 @@ export default {
         annotations: [{ type: 'link' }, { type: 'internalLink' }, { type: 'note' }],
       },
       of: [{ type: 'authorReference' }],
-    },
+    }),
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-    {
+    defineField({
       type: 'mainImage',
       options: { hotspot: true },
-    },
-    {
+    }),
+    defineField({
       type: 'codesnippet',
-    },
+    }),
   ],
-}
+})

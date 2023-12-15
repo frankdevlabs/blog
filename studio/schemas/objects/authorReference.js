@@ -1,9 +1,11 @@
-export default {
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
   name: 'authorReference',
   type: 'object',
   title: 'Author reference',
   fields: [
-    {
+    defineField({
       name: 'author',
       type: 'reference',
       to: [
@@ -11,7 +13,7 @@ export default {
           type: 'author',
         },
       ],
-    },
+    }),
   ],
   preview: {
     select: {
@@ -19,4 +21,4 @@ export default {
       media: 'author.image.asset',
     },
   },
-}
+})

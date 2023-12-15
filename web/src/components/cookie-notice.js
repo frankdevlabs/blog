@@ -2,15 +2,11 @@ import React, { useContext, useEffect, useState } from "react"; // eslint-disabl
 import { Link } from "gatsby";
 import CookieIcon from "./icons/cookie.svg";
 import Button from "./button";
-import mq from "../lib/media";
+import mq from "../theme/media-queries";
 import useCookie from "../lib/useCookie";
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
 
 const CookieNotice = () => {
   const [showNotice, setShowNotice] = useCookie("showNotice", 1);
-  const { theme } = useContext(ThemeContext);
-  const { modalBackground } = getTheme(theme);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -28,7 +24,7 @@ const CookieNotice = () => {
         position: "fixed",
         maxWidth: "410px",
         maxHeight: "304px",
-        background: modalBackground,
+        background: "var(--color-modalBackground)",
         boxShadow: "0px 15px 35px rgba(0, 0, 0, 0.15)",
         borderRadius: "5px",
         padding: "3.9rem 4.1rem",

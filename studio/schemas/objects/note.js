@@ -1,6 +1,7 @@
 import { MdChatBubbleOutline } from 'react-icons/md'
+import { defineField, defineType } from 'sanity'
 
-export default {
+export default defineType({
   name: 'note',
   type: 'object',
   title: 'Footnote',
@@ -8,7 +9,7 @@ export default {
     icon: MdChatBubbleOutline,
   },
   fields: [
-    {
+    defineField({
       name: 'content',
       type: 'array',
       of: [
@@ -37,6 +38,6 @@ export default {
           },
         },
       ],
-    },
+    }),
   ],
-}
+})

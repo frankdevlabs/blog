@@ -1,18 +1,14 @@
-import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
+import React from "react"; // eslint-disable-line no-unused-vars
 
 const Button = ({ children, onClick }) => {
-  const { theme } = useContext(ThemeContext);
-  const { button, buttonText, buttonHover } = getTheme(theme);
   return (
     <button
       onClick={onClick}
       css={{
-        background: button,
+        background: "var(--color-button)",
         borderRadius: "5px",
         padding: "15px 35px",
-        color: buttonText,
+        color: "var(--color-buttonText)",
         fontStyle: "normal",
         fontWeight: "300",
         fontSize: "1.6rem",
@@ -21,7 +17,7 @@ const Button = ({ children, onClick }) => {
         textAlign: "center",
         letterSpacing: "0.01em",
         "&:hover": {
-          background: buttonHover,
+          background: "var(--color-buttonHover)",
         },
       }}
     >

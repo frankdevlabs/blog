@@ -24,7 +24,6 @@ module.exports = {
       resolve: "gatsby-source-sanity",
       options: {
         ...clientConfig.sanity,
-        token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd,
       },
@@ -103,27 +102,28 @@ module.exports = {
                     date: edge.node.publishedAt,
                     url: process.env.GATSBY_HOME_PAGE + path,
                     guid: edge.node.slug.current,
-                  }
+                  },
                 );
               });
             },
-            query: `
-            {
-                allSanityPost(filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}, sort: {order: DESC, fields: publishedAt}) {
-                  edges {
-                    node {
-                      id
-                      title
-                      publishedAt
-                      _rawExcerpt(resolveReferences: {maxDepth: 5})
-                      slug {
-                        current
-                      }
+            query: `{
+              allSanityPost(
+                filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+                sort: {publishedAt: DESC}
+              ) {
+                edges {
+                  node {
+                    id
+                    title
+                    publishedAt
+                    _rawExcerpt(resolveReferences: {maxDepth: 5})
+                    slug {
+                      current
                     }
                   }
                 }
               }
-            `,
+            }`,
             output: "/feeds/rss.xml",
             title: "Frank's RSS Feed",
             // optional configuration to insert feed reference in pages:

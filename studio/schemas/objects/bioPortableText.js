@@ -1,9 +1,11 @@
-export default {
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
   name: 'bioPortableText',
   type: 'array',
   title: 'Excerpt',
   of: [
-    {
+    defineField({
       type: 'block',
       title: 'Block',
       styles: [{ title: 'Normal', value: 'normal' }],
@@ -15,6 +17,6 @@ export default {
           { title: 'Code', value: 'code' },
         ],
       },
-    },
+    }),
   ],
-}
+})
