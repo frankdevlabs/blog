@@ -1,6 +1,7 @@
 import React, { useState } from "react"; // eslint-disable-line no-unused-vars
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
+import GlobalStyles from "../theme/globalStyles";
 
 const query = graphql`
   query SiteTitleQuery {
@@ -26,13 +27,16 @@ function LayoutContainer(props) {
     );
   }
   return (
-    <Layout
-      {...props}
-      showNav={showNav}
-      siteTitle={data.site.title}
-      onHideNav={handleHideNav}
-      onShowNav={handleShowNav}
-    />
+    <>
+      <GlobalStyles />
+      <Layout
+        {...props}
+        showNav={showNav}
+        siteTitle={data.site.title}
+        onHideNav={handleHideNav}
+        onShowNav={handleShowNav}
+      />
+    </>
   );
 }
 

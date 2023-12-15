@@ -13,6 +13,7 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@sanity/block-content-to-react": "^3.0.0",
@@ -36,6 +37,7 @@
     "gatsby-transformer-sharp": "^5.12.3",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "terser": "^4.8.1"
   }
 }

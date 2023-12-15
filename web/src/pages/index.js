@@ -7,50 +7,51 @@ import {
 } from "../lib/helpers";
 import GraphQLErrorList from "../components/graphql-error-list";
 import Seo from "../components/seo";
-import Layout from "../containers/layout";
 import BlogPostPreviewList from "../components/blog-post-preview-list";
-import mq from "../lib/media";
+import mq from "../theme/media-queries";
 
-export const query = graphql`query IndexPageQuery {
-  site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
-    title
-    description
-    keywords
-  }
-  posts: allSanityPost(
-    sort: {publishedAt: DESC}
-    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
-  ) {
-    edges {
-      node {
-        id
-        publishedAt
-        mainImage {
-          caption
-          alt
-          asset {
-            _id
+export const query = graphql`
+  query IndexPageQuery {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      description
+      keywords
+    }
+    posts: allSanityPost(
+      sort: { publishedAt: DESC }
+      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+    ) {
+      edges {
+        node {
+          id
+          publishedAt
+          mainImage {
+            caption
+            alt
+            asset {
+              _id
+            }
           }
-        }
-        readingTimeInMinutes
-        title
-        _rawExcerpt
-        slug {
-          current
+          readingTimeInMinutes
+          title
+          _rawExcerpt
+          slug {
+            current
+          }
         }
       }
     }
   }
-}`;
+`;
 
 const IndexPage = (props) => {
   const { data, errors } = props;
 
   if (errors) {
     return (
-      <Layout>
+      <>
         <GraphQLErrorList errors={errors} />
-      </Layout>
+      </>
     );
   }
 
@@ -61,7 +62,7 @@ const IndexPage = (props) => {
     : [];
 
   return (
-    <Layout>
+    <>
       <section
         className="hero-section"
         css={{
@@ -95,7 +96,7 @@ const IndexPage = (props) => {
           )}
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 
@@ -104,9 +105,9 @@ export const Head = (props) => {
 
   if (errors) {
     return (
-      <Layout>
+      <>
         <GraphQLErrorList errors={errors} />
-      </Layout>
+      </>
     );
   }
 
@@ -114,7 +115,7 @@ export const Head = (props) => {
 
   if (!site) {
     throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.',
     );
   }
   return (

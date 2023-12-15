@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"; // eslint-disable-line no-unused-vars
+import React, { useEffect } from "react"; // eslint-disable-line no-unused-vars
 import { format, parseISO } from "date-fns";
 import nl from "date-fns/locale/nl";
 import PortableText from "./portable-text";
@@ -7,10 +7,8 @@ import Prism from "prismjs";
 import SocialShare from "./share";
 import ReadMore from "./read-more";
 import { getBlogUrl } from "../lib/helpers";
-import mq from "../lib/media";
+import mq from "../theme/media-queries";
 import { Link } from "gatsby";
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
 
 const BlogPost = (props) => {
   useEffect(() => {
@@ -18,8 +16,6 @@ const BlogPost = (props) => {
     Prism.highlightAll();
   });
   const url = process.env.GATSBY_HOME_PAGE + getBlogUrl(props.publishedAt, props.slug.current);
-  const { theme } = useContext(ThemeContext);
-  const { borderColor } = getTheme(theme);
   return (
     <>
       <section>
@@ -83,7 +79,7 @@ const BlogPost = (props) => {
               marginLeft: "auto",
               marginRight: "auto",
               maxWidth: "688px",
-              borderBottom: `1px solid ${borderColor}`,
+              borderBottom: `1px solid var(--color-borderColor)`,
               position: "relative",
             }}
           >

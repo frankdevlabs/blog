@@ -1,14 +1,10 @@
-import React, { useContext, useState } from "react"; // eslint-disable-line no-unused-vars
+import React, { useState } from "react"; // eslint-disable-line no-unused-vars
 import PortableText from "./portable-text";
 import InfoIcon from "./icons/info.svg";
-import mq from "../lib/media";
-import { EASE_IN_OUT_TRANSITION, getTheme } from "../theme/theme";
-import ThemeContext from "../theme/ThemeContext";
+import mq from "../theme/media-queries";
 
 const Note = ({ mark, children }) => {
   const [touched, setTouched] = useState(false);
-  const { theme } = useContext(ThemeContext);
-  const { color } = getTheme(theme);
 
   const toggleTouchedOnClick = (e) => {
     e.stopPropagation();
@@ -31,7 +27,7 @@ const Note = ({ mark, children }) => {
       tabIndex="0"
       css={{
         borderBottom: "1px dashed #D9BF65",
-        transition: `border ${EASE_IN_OUT_TRANSITION}`,
+        transition: `border var(--transition-ease-in-out)`,
         cursor: "help",
         "& a": {
           cursor: "pointer",
@@ -61,7 +57,7 @@ const Note = ({ mark, children }) => {
       {children}
       <span
         css={{
-          color: color,
+          color: "var(--color-text)",
           position: "relative",
           width: "16px",
           height: "100%",
@@ -80,7 +76,7 @@ const Note = ({ mark, children }) => {
           "@media print": {
             display: "none !important",
           },
-          color: color,
+          color: "var(--color-text)",
           position: "absolute",
           left: "700px",
           fontSize: "1.2rem",
@@ -89,7 +85,7 @@ const Note = ({ mark, children }) => {
           maxWidth: "220px",
           padding: "11px",
           border: "1px dashed transparent",
-          transition: `border ${EASE_IN_OUT_TRANSITION}`,
+          transition: "border var(--transition-ease-in-out)",
           [mq("xl")]: {
             position: "fixed",
             color: "#FEFBF4",
@@ -101,7 +97,7 @@ const Note = ({ mark, children }) => {
             background: "rgba(1, 1, 1, 0.9)",
             borderRadius: "8px",
             maxWidth: "360px",
-            transition: `opacity ${EASE_IN_OUT_TRANSITION}`,
+            transition: "opacity var(--transition-ease-in-out)",
           },
         }}
       >

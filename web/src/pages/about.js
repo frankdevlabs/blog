@@ -1,14 +1,11 @@
-import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
+import React from "react"; // eslint-disable-line no-unused-vars
 import { GatsbyImage } from "gatsby-plugin-image";
-import Layout from "../containers/layout";
 import Seo from "../components/seo";
 import { graphql, Link } from "gatsby";
 import PortableText from "../components/portable-text";
 import SocialShare from "../components/share";
 import ReadMore from "../components/read-more";
-import mq from "../lib/media";
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
+import mq from "../theme/media-queries";
 
 export const query = graphql`
   query AboutPageQuery {
@@ -29,10 +26,8 @@ const AboutPage = (props) => {
   const title = "Over mij";
   const url = process.env.GATSBY_HOME_PAGE + "/about/";
   const image = props.data.image.childImageSharp.gatsbyImageData;
-  const { theme } = useContext(ThemeContext);
-  const { borderColor } = getTheme(theme);
   return (
-    <Layout>
+    <>
       <section className="about-section">
         <div
           className="container"
@@ -86,7 +81,7 @@ const AboutPage = (props) => {
               marginLeft: "auto",
               marginRight: "auto",
               maxWidth: "688px",
-              borderBottom: `1px solid ${borderColor}`,
+              borderBottom: `1px solid var(--color-border)`,
             }}
           >
             {props.data.bio._rawBio && <PortableText blocks={props.data.bio._rawBio} />}
@@ -116,7 +111,7 @@ const AboutPage = (props) => {
           </Link>
         </p>
       </ReadMore>
-    </Layout>
+    </>
   );
 };
 

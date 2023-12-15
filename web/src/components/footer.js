@@ -1,33 +1,28 @@
-import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
+import React from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "gatsby";
 import RSSFeedIcon from "./icons/rss-feed.svg";
-import mq from "../lib/media";
-import ThemeContext from "../theme/ThemeContext";
-import { getTheme } from "../theme/theme";
+import mq from "../theme/media-queries";
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext);
-  const { outerPadding, outerPaddingXL, outerPaddingMD, outerPaddingSM, borderColor } =
-    getTheme(theme);
   return (
     <footer
       css={{
-        padding: `125px ${outerPadding} 0 ${outerPadding}`,
+        padding: `125px var(--padding-outer-default) 0 var(--padding-outer-default)`,
         [mq("lg")]: {
-          padding: `125px ${outerPaddingXL} 0 ${outerPaddingXL}`,
+          padding: `125px var(--padding-outer-xl) 0 var(--padding-outer-xl)`,
         },
         [mq("md")]: {
-          padding: `60px ${outerPaddingMD} 0 ${outerPaddingMD}`,
+          padding: `60px var(--padding-outer-md) 0 var(--padding-outer-md) `,
         },
         [mq("sm")]: {
-          padding: `35px ${outerPaddingSM} 0 ${outerPaddingSM}`,
+          padding: `35px var(--padding-outer-sm)  0 var(--padding-outer-sm) `,
         },
       }}
     >
       <div
         className="container"
         css={{
-          borderTop: `1px solid ${borderColor}`,
+          borderTop: `1px solid var(--color-border)`,
         }}
       >
         <div
