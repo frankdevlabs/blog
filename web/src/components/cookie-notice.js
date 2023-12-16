@@ -62,8 +62,9 @@ const CookieNotice = () => {
           paddingTop: "2.5rem",
         }}
       >
-        Deze website maakt gebruik van functionele en analytische cookies en vergelijkbare
-        technieken.{" "}
+        {
+          "Deze website maakt gebruik van functionele en analytische cookies en vergelijkbare technieken."
+        }
         <Link className="anchor" to="/privacy/">
           Meer informatie
         </Link>

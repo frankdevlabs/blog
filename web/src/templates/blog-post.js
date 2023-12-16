@@ -1,6 +1,6 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { graphql } from "gatsby";
-import { getBlogUrl, toPlainText } from "../lib/helpers";
+import { toPlainText } from "../lib/helpers";
 import GraphQLErrorList from "../components/graphql-error-list";
 import BlogPost from "../components/blog-post";
 import Seo from "../components/seo";

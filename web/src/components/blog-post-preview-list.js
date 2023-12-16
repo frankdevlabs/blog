@@ -5,7 +5,6 @@ import PortableText from "./portable-text";
 
 const BlogPostPreviewList = (props) => {
   const { nodes } = props;
-  console.log(nodes);
   return (
     <div className="flexbox grid">
       {nodes &&
