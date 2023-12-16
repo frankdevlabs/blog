@@ -11,6 +11,8 @@ export const query = graphql`
       id
       readingTimeInMinutes
       publishedAt
+      dateString
+      datedSlug
       categories {
         _id
         title
@@ -65,7 +67,7 @@ export const Head = (props) => {
             alt: post.mainImage.alt,
           }}
           type="article"
-          path={getBlogUrl(post.publishedAt, post.slug.current)}
+          path={post.datedSlug}
         />
       )}
     </>

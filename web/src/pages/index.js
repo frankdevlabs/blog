@@ -24,6 +24,8 @@ export const query = graphql`
         node {
           id
           publishedAt
+          datedSlug
+          dateString
           mainImage {
             caption
             alt

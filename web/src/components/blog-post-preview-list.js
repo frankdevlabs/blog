@@ -1,20 +1,16 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "gatsby";
-import { format, parseISO } from "date-fns";
-import nl from "date-fns/locale/nl";
 import SanityImage from "gatsby-plugin-sanity-image";
 import PortableText from "./portable-text";
-import { getBlogUrl } from "../lib/helpers";
 
 const BlogPostPreviewList = (props) => {
   const { nodes } = props;
+  console.log(nodes);
   return (
     <div className="flexbox grid">
       {nodes &&
         nodes.map((node) => {
-          const dateCaption = `${format(parseISO(node.publishedAt), "d MMMM yyyy", {
-            locale: nl,
-          })} | ${node.readingTimeInMinutes} min.`;
+          const dateCaption = `${node.dateString} | ${node.readingTimeInMinutes} min.`;
           return (
             <div
               key={node.id}
@@ -26,7 +22,7 @@ const BlogPostPreviewList = (props) => {
                 },
               }}
             >
-              <Link to={getBlogUrl(node.publishedAt, node.slug.current)}>
+              <Link to={node.datedSlug}>
                 <div
                   css={{
                     height: "24.5rem",

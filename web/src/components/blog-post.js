@@ -1,12 +1,9 @@
 import React, { useEffect } from "react"; // eslint-disable-line no-unused-vars
-import { format, parseISO } from "date-fns";
-import nl from "date-fns/locale/nl";
 import PortableText from "./portable-text";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Prism from "prismjs";
 import SocialShare from "./share";
 import ReadMore from "./read-more";
-import { getBlogUrl } from "../lib/helpers";
 import mq from "../theme/media-queries";
 import { Link } from "gatsby";
 
@@ -15,7 +12,7 @@ const BlogPost = (props) => {
     // call the highlightAll() function to style our code blocks
     Prism.highlightAll();
   });
-  const url = process.env.GATSBY_HOME_PAGE + getBlogUrl(props.publishedAt, props.slug.current);
+  const url = process.env.GATSBY_HOME_PAGE + props.datedSlug;
   return (
     <>
       <section>
@@ -30,11 +27,10 @@ const BlogPost = (props) => {
         >
           <h1 className="heading-1">{props.title}</h1>
           <div className="caption" css={{ padding: "1rem 0" }}>
-            {`${format(parseISO(props.publishedAt), "d MMMM yyyy", { locale: nl })}
-            | ${props.readingTimeInMinutes}
-            ${props.readingTimeInMinutes > 0 ? "minuten" : "minuut"} lezen
-            |
-        `}
+            {`${props.dateString} | ${props.readingTimeInMinutes} ${
+              props.readingTimeInMinutes > 0 ? "minuten" : "minuut"
+            } lezen |
+            `}
             <SocialShare href={url} title={props.title}>
               Deel dit blog via
             </SocialShare>
