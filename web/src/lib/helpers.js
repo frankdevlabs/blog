@@ -1,4 +1,5 @@
 const { isFuture, format, parseISO } = require("date-fns");
+const { nl } = require("date-fns/locale/nl");
 
 module.exports.mapEdgesToNodes = function (data) {
   if (!data.edges) return [];
@@ -28,5 +29,7 @@ module.exports.toPlainText = function (blocks) {
 };
 
 module.exports.getBlogUrl = function (publishedAt, slug) {
-  return `/blog/${format(parseISO(publishedAt), "yyyy/MM")}/${slug.current || slug}/`;
+  return `/blog/${format(parseISO(publishedAt), "yyyy/MM", { locale: nl })}/${
+    slug.current || slug
+  }/`;
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"; // eslint-disable-line no-unused-vars
+import React, { useEffect, useState } from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "gatsby";
 import CookieIcon from "./icons/cookie.svg";
 import Button from "./button";
