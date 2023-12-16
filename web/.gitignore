@@ -70,3 +70,6 @@ yarn.lock
 # Secrets
 .env.development
 .env*
+
+graphql.config.yml
+schema.graphql

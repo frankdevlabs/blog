@@ -88,6 +88,7 @@ async function createBlogPostPages(graphql, actions) {
         path,
         component: require.resolve("./src/templates/blog-post.js"),
         context: { id },
+        ownerNodeId: id,
       });
     });
 }

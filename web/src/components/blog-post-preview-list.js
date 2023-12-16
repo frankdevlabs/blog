@@ -8,7 +8,7 @@ const BlogPostPreviewList = (props) => {
   return (
     <div className="flexbox grid">
       {nodes &&
-        nodes.map((node) => {
+        nodes.map((node, index) => {
           const dateCaption = `${node.dateString} | ${node.readingTimeInMinutes} min.`;
           return (
             <div
@@ -51,6 +51,7 @@ const BlogPostPreviewList = (props) => {
                       objectFit: "cover",
                       borderRadius: "4px",
                     }}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 </div>
                 <h3 className="heading-3" css={{ marginTop: "6px" }}>
