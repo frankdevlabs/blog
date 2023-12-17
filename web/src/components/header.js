@@ -1,6 +1,5 @@
 import React, { useContext } from "react"; // eslint-disable-line no-unused-vars
-import LightIcon from "./icons/logo-light.svg";
-import DarkIcon from "./icons/logo-dark.svg";
+import Logo from "./icons/logo.svg";
 import { Link } from "gatsby";
 import DarkModeIcon from "./icons/dark-mode.svg";
 import LightModeIcon from "./icons/light-mode.svg";
@@ -29,6 +28,12 @@ const Header = () => {
           <div
             css={{
               marginBottom: "-1.6rem",
+              "svg > path:first-of-type": {
+                fill: "var(--color-primary)",
+              },
+              "svg > circle": {
+                fill: "var(--color-primary)",
+              },
               [mq("sm")]: {
                 marginBottom: "-1rem",
                 maxWidth: "35vw",
@@ -39,7 +44,7 @@ const Header = () => {
             }}
           >
             <Link aria-label="home-button" to="/">
-              {colorMode === "light" ? <LightIcon /> : colorMode === "dark" ? <DarkIcon /> : null}
+              <Logo />
             </Link>
           </div>
           <div
@@ -70,7 +75,7 @@ const Header = () => {
             </Link>
             <button
               aria-label="Light and dark mode switch"
-              onClick={(ev) => {
+              onClick={() => {
                 setColorMode(colorMode === "light" ? "dark" : "light");
               }}
               css={{

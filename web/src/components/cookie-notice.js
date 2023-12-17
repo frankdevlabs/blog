@@ -11,10 +11,10 @@ const CookieNotice = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     if (!showNotice) return setActive(showNotice);
 
     const timer = setTimeout(() => {
-      setIsMounted(true);
       setActive(showNotice);
     }, 2000);
     return () => clearTimeout(timer);

@@ -39,6 +39,10 @@ export const COLORS = {
     light: "#FEFEFE",
     dark: "#0E2845",
   },
+  logoPrimaryColor: {
+    light: "#09192B",
+    dark: "#FEFBF4",
+  },
   /* Below constants are used to display the prism.js theme.
    * For further reference see the globalStyles.js file.
    * */

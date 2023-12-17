@@ -8,6 +8,7 @@ const clientConfig = require("./client-config");
 
 const isProd = process.env.NODE_ENV === "production";
 const path = require("path");
+const React = require("react");
 
 module.exports = {
   siteMetadata: {
@@ -71,6 +72,43 @@ module.exports = {
       resolve: "gatsby-plugin-preconnect",
       options: {
         domains: [{ domain: `${process.env.GATSBY_TAG_CONTAINER_URL}`, crossOrigin: "anonymous" }],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-preload",
+      options: {
+        preloaders: [
+          {
+            href: "/fonts/ubuntu-v20-latin-300.woff",
+            as: "font",
+            type: "font/woff",
+            crossOrigin: "true",
+          },
+          {
+            href: "/fonts/ubuntu-v20-latin-regular.woff",
+            as: "font",
+            type: "font/woff",
+            crossOrigin: "true",
+          },
+          {
+            href: "/fonts/ubuntu-v20-latin-500.woff",
+            as: "font",
+            type: "font/woff",
+            crossOrigin: "true",
+          },
+          {
+            href: "/fonts/ubuntu-v20-latin-700.woff",
+            as: "font",
+            type: "font/woff",
+            crossOrigin: "true",
+          },
+          {
+            href: "/fonts/raleway-v28-latin-regular.woff",
+            as: "font",
+            type: "font/woff",
+            crossOrigin: "true",
+          },
+        ],
       },
     },
     {
