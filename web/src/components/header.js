@@ -39,7 +39,7 @@ const Header = () => {
             }}
           >
             <Link aria-label="home-button" to="/">
-              {colorMode === "light" ? <LightIcon /> : <DarkIcon />}
+              {colorMode === "light" ? <LightIcon /> : colorMode === "dark" ? <DarkIcon /> : null}
             </Link>
           </div>
           <div
@@ -93,9 +93,9 @@ const Header = () => {
             >
               {colorMode === "light" ? (
                 <LightModeIcon className="icon" />
-              ) : (
+              ) : colorMode === "dark" ? (
                 <DarkModeIcon className="icon" />
-              )}
+              ) : null}
             </button>
           </div>
         </div>

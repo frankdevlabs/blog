@@ -57,6 +57,41 @@ const Seo = ({ title, description, path, children, image, contentType = "website
       <meta name="twitter:image:alt" content={seo.imageAlt} />
       <meta name="twitter:creator" content={seo.creator} />
       <link rel="canonical" href={seo.url} />
+      <link
+        rel="preload"
+        href="/fonts/ubuntu-v20-latin-300.woff"
+        as="font"
+        type="font/woff"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        href="/fonts/ubuntu-v20-latin-regular.woff"
+        as="font"
+        type="font/woff"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        href="/fonts/ubuntu-v20-latin-500.woff"
+        as="font"
+        type="font/woff"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        href="/fonts/ubuntu-v20-latin-700.woff"
+        as="font"
+        type="font/woff"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        href="/fonts/raleway-v28-latin-regular.woff"
+        as="font"
+        type="font/woff"
+        crossOrigin="true"
+      />
       {children}
     </>
   );
