@@ -104,7 +104,7 @@ module.exports = {
             crossOrigin: "true",
           },
           {
-            href: "/fonts/raleway-v28-latin-regular.woff",
+            href: "/fonts/raleway-v28-latin-300.woff",
             as: "font",
             type: "font/woff",
             crossOrigin: "true",
