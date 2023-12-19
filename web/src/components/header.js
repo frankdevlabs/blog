@@ -66,9 +66,6 @@ const Header = () => {
                 color: "var(--color-primary)",
                 paddingTop: "11px",
                 marginRight: "30px",
-                [mq("sm")]: {
-                  paddingTop: "0",
-                },
               }}
             >
               over mij

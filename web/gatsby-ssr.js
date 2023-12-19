@@ -1,5 +1,7 @@
 import React, { createElement } from "react"; // eslint-disable-line no-unused-vars
 import Terser from "terser";
+import { CacheProvider } from "@emotion/react";
+import { createMyCache } from "./src/theme/emotion-cache";
 import Layout from "./src/containers/layout";
 import { ThemeProviderWrapper } from "./src/theme/ThemeContext";
 import {
@@ -130,4 +132,11 @@ export const wrapPageElement = ({ element }) => {
   return <Layout>{element}</Layout>;
 };
 // Wraps the root element in a component
-export const wrapRootElement = ThemeProviderWrapper;
+// export const wrapRootElement = ThemeProviderWrapper;
+export const wrapRootElement = ({ element }) => {
+  return (
+    <CacheProvider value={createMyCache()}>
+      <ThemeProviderWrapper element={element} />
+    </CacheProvider>
+  );
+};

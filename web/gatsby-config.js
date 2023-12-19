@@ -1,3 +1,5 @@
+const React = require("react"); // eslint-disable-line no-unused-vars
+const adapter = require("gatsby-adapter-netlify").default;
 // Load variables from `.env` as soon as possible
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV || "development"}`,
@@ -8,7 +10,6 @@ const clientConfig = require("./client-config");
 
 const isProd = process.env.NODE_ENV === "production";
 const path = require("path");
-const React = require("react");
 
 module.exports = {
   siteMetadata: {
@@ -181,4 +182,7 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-robots-txt",
   ],
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+  }),
 };

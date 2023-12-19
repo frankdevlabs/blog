@@ -45,11 +45,12 @@ export const ThemeProvider = ({ element }) => {
     };
   }, [colorMode, rawSetColorMode]);
 
-  return (
-    <ThemeContext.Provider value={contextValue}>
-      <CacheProvider value={myCache}>{element}</CacheProvider>
-    </ThemeContext.Provider>
-  );
+  // return (
+  //   <ThemeContext.Provider value={contextValue}>
+  //     <CacheProvider value={myCache}>{element}</CacheProvider>
+  //   </ThemeContext.Provider>
+  // );
+  return <ThemeContext.Provider value={contextValue}>{element}</ThemeContext.Provider>;
 };
 
 export const ThemeProviderWrapper = ({ element }) => {
