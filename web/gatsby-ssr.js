@@ -132,7 +132,6 @@ export const wrapPageElement = ({ element }) => {
   return <Layout>{element}</Layout>;
 };
 // Wraps the root element in a component
-// export const wrapRootElement = ThemeProviderWrapper;
 export const wrapRootElement = ({ element }) => {
   return (
     <CacheProvider value={createMyCache()}>

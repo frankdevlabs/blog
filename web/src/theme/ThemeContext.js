@@ -1,6 +1,4 @@
 import React from "react";
-import { CacheProvider } from "@emotion/react";
-import { myCache } from "./emotion-cache";
 
 import { COLORS, TRANSITION_TIMES, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP } from "./constants";
 export const ThemeContext = React.createContext();
@@ -45,11 +43,6 @@ export const ThemeProvider = ({ element }) => {
     };
   }, [colorMode, rawSetColorMode]);
 
-  // return (
-  //   <ThemeContext.Provider value={contextValue}>
-  //     <CacheProvider value={myCache}>{element}</CacheProvider>
-  //   </ThemeContext.Provider>
-  // );
   return <ThemeContext.Provider value={contextValue}>{element}</ThemeContext.Provider>;
 };
 
