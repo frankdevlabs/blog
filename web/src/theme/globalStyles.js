@@ -171,6 +171,10 @@ const GlobalStyles = () => {
           padding: 0;
           box-sizing: inherit;
         }
+        *::selection {
+          color: var(--color-background);
+          background: var(--color-secondary);
+        }
         html {
           scrollbar-color: var(--color-scrollbarColor);
           font-size: 62.5%;
