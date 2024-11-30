@@ -104,26 +104,37 @@ const gtmLoadScript = `
 `;
 
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents, setHtmlAttributes }) => {
-  const gtmHeadScript = createElement("script", {
-    key: "gtm-head",
-    dangerouslySetInnerHTML: {
-      __html: gtmLoadScript,
-    },
-  });
-  const gtmBodyScript = (
-    <noscript key="gtm-body">
-      <iframe
-        title="gtm-body-iframe"
-        src={`${process.env.GATSBY_TAG_CONTAINER_URL}/ns.html?id=${process.env.GATSBY_GTM_ID}`}
-        height="0"
-        width="0"
-        style={{ display: "none", visibility: "hidden" }}
-      ></iframe>
-    </noscript>
-  );
+  const gtmEnabled = process.env.GATSBY_GTM_ENABLED !== "false";
 
-  setHeadComponents([<FallbackStyles key="fallback-styles" />, gtmHeadScript]);
-  setPreBodyComponents([<DarkThemeScriptTag key="darkmode" />, gtmBodyScript]);
+  let headComponents = [<FallbackStyles key="fallback-styles" />];
+  let preBodyComponents = [<DarkThemeScriptTag key="darkmode" />];
+
+  if (gtmEnabled && process.env.GATSBY_GTM_ID) {
+    const gtmHeadScript = createElement("script", {
+      key: "gtm-head",
+      dangerouslySetInnerHTML: {
+        __html: gtmLoadScript,
+      },
+    });
+
+    const gtmBodyScript = (
+      <noscript key="gtm-body">
+        <iframe
+          title="gtm-body-iframe"
+          src={`${process.env.GATSBY_TAG_CONTAINER_URL}/ns.html?id=${process.env.GATSBY_GTM_ID}`}
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
+    );
+
+    headComponents.push(gtmHeadScript);
+    preBodyComponents.push(gtmBodyScript);
+  }
+
+  setHeadComponents(headComponents);
+  setPreBodyComponents(preBodyComponents);
   setHtmlAttributes({ prefix: "og: http://ogp.me/ns#", lang: "nl" });
 };
 

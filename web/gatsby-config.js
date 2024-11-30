@@ -23,6 +23,14 @@ module.exports = {
   plugins: [
     "gatsby-plugin-emotion",
     {
+      resolve: "gatsby-plugin-simple-analytics",
+      options: {
+        trackPageViews: true,
+        events: true,
+        eventsGlobal: "sa_event",
+      },
+    },
+    {
       resolve: "gatsby-source-sanity",
       options: {
         ...clientConfig.sanity,
@@ -72,7 +80,10 @@ module.exports = {
     {
       resolve: "gatsby-plugin-preconnect",
       options: {
-        domains: [{ domain: `${process.env.GATSBY_TAG_CONTAINER_URL}`, crossOrigin: "anonymous" }],
+        domains:
+          process.env.GATSBY_GTM_ENABLED === "true"
+            ? [{ domain: `${process.env.GATSBY_TAG_CONTAINER_URL}`, crossOrigin: "anonymous" }]
+            : [],
       },
     },
     {
