@@ -6,6 +6,7 @@
 
 const { format, parseISO, isFuture } = require("date-fns");
 const { nl } = require("date-fns/locale/nl");
+
 /*
   The createResolvers API allows us to extend the GraphQL schema and
   add our own custom fields to the types within the schema.
@@ -67,6 +68,7 @@ async function createBlogPostPages(graphql, actions) {
             slug {
               current
             }
+            externalUrl
           }
         }
       }
@@ -79,6 +81,7 @@ async function createBlogPostPages(graphql, actions) {
 
   postEdges
     .filter((edge) => !isFuture(parseISO(edge.node.publishedAt)))
+    .filter((edge) => !edge.node.externalUrl)
     .forEach((edge) => {
       const { id, slug = {}, publishedAt } = edge.node;
       const dateSegment = format(parseISO(publishedAt), "yyyy/MM");
@@ -103,4 +106,16 @@ exports.createPages = async ({ graphql, actions }) => {
     isPermanent: true,
     force: true,
   });
+};
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  const typeDefs = `
+    type SanityPost implements Node {
+      externalUrl: String
+    }
+  `;
+
+  createTypes(typeDefs);
 };

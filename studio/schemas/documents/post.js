@@ -29,6 +29,12 @@ export default defineType({
       description: 'This can be used to schedule post for publishing',
     }),
     defineField({
+      name: 'externalUrl',
+      type: 'url',
+      title: 'External URL',
+      description: 'The URL of the post on the external website',
+    }),
+    defineField({
       name: 'mainImage',
       type: 'mainImage',
       title: 'Main image',

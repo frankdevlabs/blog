@@ -24,6 +24,7 @@ export const query = graphql`
         node {
           id
           publishedAt
+          externalUrl
           datedSlug
           dateString
           mainImage {

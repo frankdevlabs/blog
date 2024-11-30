@@ -31,6 +31,7 @@
     "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sanity-image": "^0.13.4",
     "gatsby-plugin-sharp": "^5.12.3",
+    "gatsby-plugin-simple-analytics": "^1.0.4",
     "gatsby-plugin-sitemap": "^6.12.3",
     "gatsby-source-filesystem": "^5.12.1",
     "gatsby-source-sanity": "^7.9.1",
@@ -40,8 +41,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "terser": "^4.8.1"
-  },
-  "devDependencies": {
-    "gatsby-plugin-simple-analytics": "^1.0.4"
   }
 }

@@ -158,7 +158,11 @@ module.exports = {
             },
             query: `{
               allSanityPost(
-                filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+                filter: {
+                  slug: {current: {ne: null}}, 
+                  publishedAt: {ne: null},
+                  externalUrl: {eq: null}
+                }
                 sort: {publishedAt: DESC}
               ) {
                 edges {
