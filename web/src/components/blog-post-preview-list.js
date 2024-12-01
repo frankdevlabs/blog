@@ -22,6 +22,12 @@ const ExternalLinkIcon = () => (
   </>
 );
 
+const saEvent = (eventName) => {
+  if (typeof window !== "undefined" && window.sa_event) {
+    window.sa_event(eventName);
+  }
+};
+
 const BlogPostPreviewList = (props) => {
   const { nodes } = props;
   return (
@@ -37,6 +43,7 @@ const BlogPostPreviewList = (props) => {
                 }utm_source=franksblog.nl&utm_medium=affiliate&utm_campaign=franksblog`,
                 target: "_blank",
                 rel: "noopener noreferrer",
+                onClick: () => saEvent(`clicked_external_link_${node.title}`),
               }
             : {
                 to: node.datedSlug,
